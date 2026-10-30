@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHARMA-PASS IFSI™ | Fiches Visuelles Pharmacologie UE 2.11</title>
+  <meta name="description" content="Validez l'UE 2.11 de pharmacologie au premier semestre sans rattrapages. Atlas visuel de 120 fiches cliniques C.A.P.S. pour étudiants en soins infirmiers (ESI).">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#1d4ed8',
+              600: '#1e40af',
+              700: '#1e3a8a',
+              900: '#0f172a',
+            },
+            medical: {
+              red: '#ef4444',
+              blue: '#0284c7',
+              teal: '#0d9488',
+              amber: '#f59e0b',
+              emerald: '#10b981',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .badge-shimmer {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 2.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .pulse-subtle {
+      animation: pulseSubtle 2s infinite ease-in-out;
+    }
+    @keyframes pulseSubtle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    /* Modal styles */
+    .modal-active {
+      display: flex !important;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- 1. TOP ANNOUNCEMENT BANNER & COUNTDOWN -->
+  <!-- ========================================================================= -->
+  <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white text-xs md:text-sm font-medium py-2.5 px-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center gap-2 justify-center">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-400 text-slate-900 animate-pulse">OFFRE DE RENTRÉE</span>
+        <span><strong>-47% de réduction</strong> + 2 Bonus Inclus jusqu'à ce soir minuit :</span>
+      </div>
+      <div class="flex items-center gap-1.5 font-mono text-xs font-bold bg-blue-950/60 px-3 py-1 rounded-full border border-blue-400/30">
+        <span>Expire dans :</span>
+        <span id="countdown-hours" class="bg-blue-600 px-1.5 py-0.5 rounded">04</span> :
+        <span id="countdown-minutes" class="bg-blue-600 px-1.5 py-0.5 rounded">27</span> :
+        <span id="countdown-seconds" class="bg-blue-600 px-1.5 py-0.5 rounded">49</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- NAVIGATION -->
+  <!-- ========================================================================= -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-10 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-blue-500/20">
+          P+
+        </div>
+        <div>
+          <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 block leading-tight">
+            PHARMA-PASS <span class="text-blue-600">IFSI™</span>
+          </span>
+          <span class="text-[10px] text-slate-500 font-medium tracking-wide uppercase block">Référentiel Officiel UE 2.11</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <a href="#methode" class="hover:text-blue-600 transition-colors">La Méthode C.A.P.S.</a>
+        <a href="#apercu" class="hover:text-blue-600 transition-colors">Aperçu des Fiches</a>
+        <a href="#programme" class="hover:text-blue-600 transition-colors">Les 8 Modules</a>
+        <a href="#temoignages" class="hover:text-blue-600 transition-colors">Avis ESI</a>
+        <a href="#tarifs" class="hover:text-blue-600 transition-colors">Tarifs</a>
+      </nav>
+      <a href="#tarifs" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+        Télécharger mes fiches
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-8 pb-16 md:pt-14 md:pb-24 hero-glow overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Social Proof Badge -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold shadow-sm">
+          <span class="flex text-amber-400 text-sm">★★★★★</span>
+          <span class="text-slate-700 font-bold">4.9/5</span>
+          <span class="text-slate-400">•</span>
+          <span>+2 480 étudiants ESI équipés en France</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          Conforme ANSM & Référentiel IFSI 2026
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.15] mb-6">
+          PHARMA-PASS IFSI : <br class="hidden sm:inline">
+          <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
+            Réussir l'UE 2.11 et Sécuriser vos Stages sans Stresser
+          </span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-slate-600 font-normal leading-relaxed max-w-3xl mx-auto mb-8">
+          Le système visuel complet pour mémoriser les <strong>120 médicaments indispensables</strong> en 3 minutes par fiche, réussir vos partiels au premier semestre <strong>sans rattrapage</strong> et éliminer définitivement la hantise des calculs de doses.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a href="#tarifs" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-extrabold text-base sm:text-lg shadow-xl shadow-blue-600/30 hover:shadow-blue-600/40 transition-all hover:-translate-y-1 pulse-subtle group">
+            <span>OBTENIR MON PACK RÉUSSITE TOTALE</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+          <a href="#apercu" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold text-base border border-slate-300 shadow-sm transition-colors">
+            Voir un exemple gratuit
+          </a>
+        </div>
+
+        <!-- Trust Badges Under CTA -->
+        <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-500 font-medium">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Accès Immédiat par E-mail
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Format iPad / Tablette + Poche Imprimable
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Garantie 7 Jours Satisfait ou Remboursé
+          </span>
+        </div>
+      </div>
+
+      <!-- Hero Mockup Display -->
+      <div class="mt-12 relative max-w-4xl mx-auto">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-2 sm:p-4">
+          <img src="assets/hero_mockup.png" alt="PHARMA-PASS IFSI Mockup iPad et Fiches de Poche" class="w-full h-auto rounded-xl object-cover" loading="eager">
+          <!-- Floating badge 1 -->
+          <div class="hidden sm:flex absolute top-6 left-6 bg-white/95 backdrop-blur-md border border-slate-200 px-4 py-2.5 rounded-xl shadow-lg items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">120</div>
+            <div class="text-left">
+              <div class="text-xs font-bold text-slate-800">Fiches Cliniques C.A.P.S.</div>
+              <div class="text-[10px] text-slate-500">100% Référentiel UE 2.11</div>
+            </div>
+          </div>
+          <!-- Floating badge 2 -->
+          <div class="hidden sm:flex absolute bottom-6 right-6 bg-white/95 backdrop-blur-md border border-slate-200 px-4 py-2.5 rounded-xl shadow-lg items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="text-left">
+              <div class="text-xs font-bold text-slate-800">Format Poche Plastifiable</div>
+              <div class="text-[10px] text-slate-500">À glisser dans la blouse en stage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. SECTION TÉMOIGNAGES (AVIS VÉRIFIÉS) -->
+  <!-- ========================================================================= -->
+  <section id="temoignages" class="py-16 bg-white border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Retours d'expérience concrets</span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 mt-3 mb-4">
+          Ce que disent les étudiants et soignants qui l'utilisent
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Des résultats prouvés aux examens IFSI et une sécurité clinique maximale en stage hospitalier.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- Témoignage 1 : Clara D. -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-400 text-base">★★★★★</div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Achat Vérifié
+              </span>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+              « J'avais eu <strong>7/20 au partiel blanc</strong> de l'UE 2.11, j'étais en panique totale à l'idée d'aller aux rattrapages en juillet. Avec la structure C.A.P.S. des fiches, j'ai tout compris et assimilé en 10 jours. Résultat au partiel final : <strong>16,5/20</strong> ! En stage, avoir la fiche plastifiée dans ma blouse m'a sauvée deux fois pendant les transmissions. »
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div class="w-11 h-11 rounded-full bg-blue-100 border-2 border-blue-300 flex items-center justify-center font-bold text-blue-700 text-sm">
+              CD
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Clara D.</h3>
+              <p class="text-xs text-slate-500">ESI 2e année • IFSI Croix-Rouge Lyon</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 2 : Thomas B. -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-400 text-base">★★★★★</div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Achat Vérifié
+              </span>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+              « Les cours magistraux de pharmaco à l'IFSI sont indigestes : 600 diapos de formules de chimie dont on ne se servira jamais. Pharma-Pass va droit à l'essentiel : DCI, contre-indications et <strong>surveillance infirmière immédiate</strong>. Je suis maintenant infirmier diplômé en réanimation à Paris et je le conseille à tous mes stagiaires. »
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div class="w-11 h-11 rounded-full bg-emerald-100 border-2 border-emerald-300 flex items-center justify-center font-bold text-emerald-700 text-sm">
+              TB
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Thomas B.</h3>
+              <p class="text-xs text-slate-500">Infirmier Diplômé d'État • Hôpital Bichat Paris</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 3 : Sarah M. -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-400 text-base">★★★★★</div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Achat Vérifié
+              </span>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+              « Les calculs de doses étaient ma hantise absolue. J'avais une peur panique d'une faute éliminatoire au partiel ou de me planter sur un débit en stage. Le guide inclus des calculs et les fiches visuelles m'ont débloquée en 48h. Résultat : <strong>20/20 aux calculs de doses</strong> et un stage validé avec les félicitations de l'équipe ! »
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div class="w-11 h-11 rounded-full bg-indigo-100 border-2 border-indigo-300 flex items-center justify-center font-bold text-indigo-700 text-sm">
+              SM
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Sarah M.</h3>
+              <p class="text-xs text-slate-500">ESI 1re année • IFSI CHU Bordeaux</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Realistic Community Snapshot -->
+      <div class="mt-10 bg-blue-50/70 border border-blue-200 rounded-2xl p-6 max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-6">
+        <div class="flex -space-x-2">
+          <div class="w-10 h-10 rounded-full bg-blue-500 text-white font-bold flex items-center justify-center text-xs border-2 border-white">L</div>
+          <div class="w-10 h-10 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-xs border-2 border-white">M</div>
+          <div class="w-10 h-10 rounded-full bg-indigo-500 text-white font-bold flex items-center justify-center text-xs border-2 border-white">A</div>
+          <div class="w-10 h-10 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-xs border-2 border-white">E</div>
+          <div class="w-10 h-10 rounded-full bg-purple-500 text-white font-bold flex items-center justify-center text-xs border-2 border-white">+2k</div>
+        </div>
+        <div class="text-center sm:text-left">
+          <p class="text-xs sm:text-sm font-semibold text-slate-800">
+            Rejoignez la communauté de plus de 2 480 étudiants infirmiers qui ont transformé leur manière d'apprendre la pharmacologie en France et en Belgique.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. SECTION 4 DOULEURS / CAUCHEMARS DE L'UE 2.11 -->
+  <!-- ========================================================================= -->
+  <section class="py-16 md:py-24 bg-slate-900 text-white relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/80 px-3.5 py-1 rounded-full border border-red-800">
+          La réalité brutale des IFSI
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-white mt-4 mb-5">
+          Pourquoi 47% des étudiants en soins infirmiers échouent à l'UE 2.11 au premier essai ?
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          Ce n'est pas par manque de travail ni d'intelligence. C'est parce que les méthodes d'enseignement traditionnelles sont inadaptées à la réalité du terrain clinique.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        
+        <!-- Douleur 1 -->
+        <div class="bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-700/80 hover:border-red-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-red-900/50 border border-red-500/30 flex items-center justify-center text-red-400 mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-3">
+            1. La Peur du 0 Éliminatoire aux Calculs de Doses
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Une simple erreur de virgule, un débit de perfusion mal converti en gouttes par minute, ou un mélange de seringue électrique (PSE), et l'examen est immédiatement <strong>annulé</strong>. Le stress des calculs paralyse des promotions entières.
+          </p>
+        </div>
+
+        <!-- Douleur 2 -->
+        <div class="bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-700/80 hover:border-red-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-amber-900/50 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-3">
+            2. Les Pavés Indigestes de 600 Pages
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Des manuels universitaires denses et monochromes écrits par des chimistes. Vous passez 4 heures à lire des mécanismes moléculaires abstraits pour finalement ne même pas savoir quoi surveiller chez un patient sous diurétique ou anticoagulant.
+          </p>
+        </div>
+
+        <!-- Douleur 3 -->
+        <div class="bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-700/80 hover:border-red-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-purple-900/50 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-3">
+            3. L'Angoisse de l'Erreur Médicamenteuse en Stage
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Arriver devant le chariot à médicaments, les mains moites, sous le regard inquisiteur de la tutrice de stage. Ne pas se rappeler si un antibiotique doit passer en 30 minutes ou en 1 heure, ou oublier de contrôler le potassium avant le Lasilix.
+          </p>
+        </div>
+
+        <!-- Douleur 4 -->
+        <div class="bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-700/80 hover:border-red-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-blue-900/50 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="font-heading font-bold text-lg sm:text-xl text-white mb-3">
+            4. Le Cauchemar du Rattrapage en Plein Mois de Juillet
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Pendant que vos amis profitent de l'été, vous êtes enfermé dans votre chambre à réviser la pharmacologie avec la menace constante du redoublement ou de l'exclusion de l'IFSI.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. SECTION LA SOLUTION C.A.P.S. & CAROUSEL INTERACTIF -->
+  <!-- ========================================================================= -->
+  <section id="methode" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Méthode C.A.P.S. Breakdown -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Le Mécanisme Unique de Mémorisation
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 mt-4 mb-4">
+          La Méthode C.A.P.S.™ : Comprendre un Médicament en 3 Minutes Chrono
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Chaque fiche est construite selon une architecture cognitive fixe en 4 cadrants conçue pour la mémoire photographique :
+        </p>
+      </div>
+
+      <!-- 4 Pillars -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <div class="p-6 rounded-2xl bg-blue-50/60 border border-blue-200">
+          <div class="w-12 h-12 rounded-xl bg-blue-600 text-white font-black text-xl flex items-center justify-center mb-4 shadow-sm">
+            C
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-2">CIBLE & DCI</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dénomination Commune Internationale officielle, famille thérapeutique exacte et récepteur biologique visé dans l'organisme.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white font-black text-xl flex items-center justify-center mb-4 shadow-sm">
+            A
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-2">ACTION THÉRAPEUTIQUE</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Mécanisme d'action vulgarisé, indications cliniques hospitalières réelles et posologies usuelles avec ajustements.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-amber-50/60 border border-amber-200">
+          <div class="w-12 h-12 rounded-xl bg-amber-500 text-white font-black text-xl flex items-center justify-center mb-4 shadow-sm">
+            P
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-2">PRÉCAUTIONS & PIÈGES</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Contre-indications absolues et relatives, interactions médicamenteuses dangereuses et populations à risque (grossesse, rein).
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-red-50/60 border border-red-200">
+          <div class="w-12 h-12 rounded-xl bg-red-600 text-white font-black text-xl flex items-center justify-center mb-4 shadow-sm">
+            S
+          </div>
+          <h3 class="font-heading font-bold text-base text-slate-900 mb-2">SURVEILLANCE INFIRMIÈRE</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Constantes vitales cibles, bilans biologiques avant/après, signes cliniques de surdosage et protocole d'urgence immédiat.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CAROUSEL INTERACTIF DES FICHES APPROUVÉES -->
+      <div id="apercu" class="pt-8 border-t border-slate-200">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">
+            Démonstrateur Interactif
+          </span>
+          <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-3 mb-2">
+            Feuilletez les Fiches Réelles du Programme
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm">
+            Cliquez sur les flèches ou les onglets pour explorer des exemples complets créés pour l'UE 2.11.
+          </p>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="relative max-w-3xl mx-auto bg-slate-900 p-4 sm:p-6 rounded-3xl shadow-2xl">
+          
+          <!-- Carousel Tabs -->
+          <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-4 text-xs font-semibold scrollbar-none">
+            <button onclick="setSlide(0)" class="carousel-tab px-3 py-1.5 rounded-lg bg-blue-600 text-white transition-all whitespace-nowrap" data-index="0">1. Paracétamol</button>
+            <button onclick="setSlide(1)" class="carousel-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all whitespace-nowrap" data-index="1">2. KCl & Dilutions</button>
+            <button onclick="setSlide(2)" class="carousel-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all whitespace-nowrap" data-index="2">3. Tramadol (Palier 2)</button>
+            <button onclick="setSlide(3)" class="carousel-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all whitespace-nowrap" data-index="3">4. Naloxone (Antidote)</button>
+            <button onclick="setSlide(4)" class="carousel-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all whitespace-nowrap" data-index="4">5. Ramipril (IEC/SRAA)</button>
+            <button onclick="setSlide(5)" class="carousel-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all whitespace-nowrap" data-index="5">6. Insuline Rapide</button>
+          </div>
+
+          <!-- Carousel Slides -->
+          <div class="relative overflow-hidden rounded-2xl bg-white shadow-inner flex items-center justify-center min-h-[420px] sm:min-h-[560px]">
+            
+            <!-- Slide 0 -->
+            <div class="carousel-slide block w-full p-2" data-slide="0">
+              <img src="assets/fiches/fiche_01_paracetamol.png" alt="Fiche Paracétamol C.A.P.S. UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+            <!-- Slide 1 -->
+            <div class="carousel-slide hidden w-full p-2" data-slide="1">
+              <img src="assets/fiches/fiche_03_kcl.png" alt="Fiche Chlorure de Potassium KCl UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide hidden w-full p-2" data-slide="2">
+              <img src="assets/fiches/fiche_15_tramadol.png" alt="Fiche Tramadol Palier 2 OMS UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide hidden w-full p-2" data-slide="3">
+              <img src="assets/fiches/fiche_21_naloxone.png" alt="Fiche Naloxone Antidote d'Urgence UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide hidden w-full p-2" data-slide="4">
+              <img src="assets/fiches/fiche_48_ramipril.png" alt="Fiche Ramipril IEC SRAA UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="carousel-slide hidden w-full p-2" data-slide="5">
+              <img src="assets/fiches/fiche_96_insuline_rapide.png" alt="Fiche Insuline Rapide UE 2.11" class="w-full h-auto mx-auto rounded-lg shadow-sm">
+            </div>
+
+          </div>
+
+          <!-- Carousel Navigation Controls -->
+          <div class="flex items-center justify-between mt-4 text-white">
+            <button onclick="prevSlide()" class="p-2.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors flex items-center gap-1 text-xs font-semibold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+              <span>Précédente</span>
+            </button>
+            <div class="text-xs text-slate-400 font-medium">
+              Fiche <span id="slide-number" class="text-white font-bold">1</span> / 6
+            </div>
+            <button onclick="nextSlide()" class="p-2.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors flex items-center gap-1 text-xs font-semibold">
+              <span>Suivante</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. SECTION LES 8 MODULES DU PROGRAMME COMPLET (120 FICHES) -->
+  <!-- ========================================================================= -->
+  <section id="programme" class="py-16 md:py-24 bg-slate-100 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Programme Exhaustif
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 mt-4 mb-4">
+          Les 8 Modules Complets de l'UE 2.11 (120 Fiches)
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Zéro impasse, zéro oubli. Tout le référentiel des semestres 1, 3 et 5 est classé et répertorié pour une révision 100% sereine.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Module 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">MODULE 1 • 10 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 1</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Règles Fondamentales & Calculs de Doses</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Débits gravitaires (gouttes/min), pousse-seringue électrique (PSE en mL/h), règle vitale du KCl, dilutions, pharmacocinétique (ADME, $T_{1/2}$) et règle d'or des 5B.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 01-10</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Règle des 5B</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Débits & PSE</span>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100">MODULE 2 • 15 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 1 & 3</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Analgésiques, AINS & Douleur</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Paliers OMS (Paracétamol, Tramadol, Codéine, Morphine, Oxycodone, Fentanyl), AINS (Ibuprofène, Kétoprofène), Corticoïdes, Colchicine et Antidote Naloxone.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 11-25</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Paliers 1 à 3</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Titration Morphine</span>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-100">MODULE 3 • 20 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 3</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Antibiotiques & Anti-Infectieux</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Béta-lactamines (Amoxicilline, Augmentin), C3G (Rocéphine), Aminosides (Gentamicine), Glycopeptides (Vancomycine), Macrolides, Fluoroquinolones et antifongiques.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 26-45</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Pic & Résiduel</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Bactéries BMR</span>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md border border-red-100">MODULE 4 • 20 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 3</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Cardiovasculaire & Hypertension</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Diurétiques (Lasilix, Spironolactone), IEC & ARA II (Ramipril, Losartan), Béta-bloquants (Bisoprolol), Dérivés nitrés, Statines, Urgences hypertensives et Adrénaline.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 46-65</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Hypokaliémie</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Surveillance TA/FC</span>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-100">MODULE 5 • 15 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 3</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Coagulation, Thrombose & Hématologie</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Héparines (HNF, Lovenox), AVK (Coumadine, Préviscan avec INR), AOD (Xarelto, Eliquis, Pradaxa), Antiagrégants (Plavix, Kardégic) et protocoles transfusionnels.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 66-80</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Surveillance TCA/INR</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Contrôle Ultime ABO</span>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-100">MODULE 6 • 15 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 3 & 5</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Psychiatrie, Neurologie & SNC</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Benzodiazépines (Valium, Séresta, Hypnovel + Anexate), Antidépresseurs (ISRS, IRSNa), Neuroleptiques (Haldol), Lithium, Antiépileptiques (Dépakine, Keppra).
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 81-95</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Syndrome Malin</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Lithémie à jeun</span>
+          </div>
+        </div>
+
+        <!-- Module 7 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">MODULE 7 • 15 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 3</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Diabète, Métabolisme & Digestif</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Insulines rapides vs lentes, protocole d'hypoglycémie et Glucagon, Metformine (arrêt avant scanner iodé), IPP (Inexium), Antiémétiques (Primperan, Zophren).
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 96-110</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Resucrage 15g</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Glucagon d'urgence</span>
+          </div>
+        </div>
+
+        <!-- Module 8 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-100">MODULE 8 • 10 FICHES</span>
+            <span class="text-xs text-slate-400 font-medium">Semestre 5</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Respiratoire, Urgences & Sécurité</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Ventoline & Atrovent en aérosolthérapie, titration de l'Oxygène chez le BPCO, Atropine, remplissage vasculaire, calendrier vaccinal ESI et procédure AES.
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-500 font-medium">
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Fiches 111-120</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Titration SpO2</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded">Protocole AES</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. CALCULATRICE INTERACTIVE D'ÉCONOMIE DE TEMPS -->
+  <!-- ========================================================================= -->
+  <section class="py-16 md:py-20 bg-white border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+          Simulateur de Gain de Temps
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-3 mb-2">
+          Combien d'Heures Allez-Vous Économiser ce Semestre ?
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm">
+          Ajustez les curseurs ci-dessous pour voir l'impact direct du format C.A.P.S. sur votre emploi du temps d'ESI.
+        </p>
+      </div>
+
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 sm:p-10 rounded-3xl shadow-xl border border-slate-700">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <!-- Controls -->
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold mb-2">
+                <label for="hours-slider" class="text-slate-200">Heures de révision par semaine :</label>
+                <span id="hours-display" class="text-blue-400 font-mono font-bold text-base">14 h</span>
+              </div>
+              <input type="range" id="hours-slider" min="5" max="30" value="14" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                <span>5 h (Minimum)</span>
+                <span>30 h (Intensif)</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold mb-2">
+                <label for="ue-slider" class="text-slate-200">Nombre d'UEs à valider :</label>
+                <span id="ue-display" class="text-blue-400 font-mono font-bold text-base">4 UEs</span>
+              </div>
+              <input type="range" id="ue-slider" min="1" max="6" value="4" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                <span>1 UE</span>
+                <span>6 UEs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Output Display -->
+          <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700 text-center flex flex-col justify-center">
+            <span class="text-xs uppercase font-bold tracking-wider text-emerald-400 mb-1">Temps précieux récupéré</span>
+            <div id="saved-hours" class="font-heading font-extrabold text-4xl sm:text-5xl text-emerald-400 mb-2 tracking-tight">
+              +112 Heures
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              C'est l'équivalent de <strong>14 nuits de sommeil complètes</strong> ou de tout un mois de révisions intenses en moins.
+            </p>
+            <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-700 text-left">
+              <div>
+                <span class="text-[10px] text-slate-400 block uppercase">Niveau de stress</span>
+                <span id="stress-reduction" class="text-sm font-bold text-blue-400">-78% estimé</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 block uppercase">Gain moyen partiel</span>
+                <span id="grade-boost" class="text-sm font-bold text-emerald-400">+4,6 points</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. SECTION DEUX CHEMINS & PRICING TABLE (17 € vs 24,90 €) -->
+  <!-- ========================================================================= -->
+  <section id="tarifs" class="py-16 md:py-24 bg-slate-50 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Investissement Pour Vos Études
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-5xl text-slate-900 mt-4 mb-4">
+          Deux Chemins S'offrent à Vous Aujourd'hui
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Choisissez la formule qui correspond à vos objectifs de semestre. Téléchargement immédiat après validation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+        
+        <!-- PLAN BÁSICO : PACK ESSENTIEL (17,00 €) -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md flex flex-col justify-between relative hover:border-slate-300 transition-colors">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-full">DÉMARRAGE RAPIDE</span>
+            </div>
+            
+            <h3 class="font-heading font-bold text-2xl text-slate-900 mb-2">Pack Essentiel</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mb-6">
+              Les 5 familles prioritaires les plus souvent interrogées au premier semestre.
+            </p>
+
+            <div class="mb-6 flex items-baseline gap-2">
+              <span class="font-heading font-extrabold text-4xl text-slate-900">17,00 €</span>
+              <span class="text-xs text-slate-500 font-medium">Paiement unique • Accès immédiat</span>
+            </div>
+
+            <!-- Card Mockup Preview -->
+            <div class="mb-6 bg-slate-50 rounded-xl p-2 border border-slate-100">
+              <img src="assets/basic_card_mockup.png" alt="Pack Essentiel Mockup" class="w-full h-auto rounded-lg object-contain">
+            </div>
+
+            <!-- Feature list -->
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-8">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>50 Fiches Visuelles CAPS</strong> (Familles prioritaires S1 & S3)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span>Analgésiques, Antibiotiques, AINS, Anticoagulants, Psychotropes</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span>Format PDF Standard A4 imprimable</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-slate-400">
+                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                <span class="line-through">Collection complète des 120 fiches (8 modules)</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-slate-400">
+                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                <span class="line-through">Version iPad interactive GoodNotes avec onglets</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-slate-400">
+                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                <span class="line-through">Format compact de poche de blouse plastifiable</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-slate-400">
+                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                <span class="line-through">Les 2 Bonus Exclusifs (Valeur 25 €)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Basic CTA Button (triggers upgrade modal) -->
+          <div>
+            <button onclick="openUpgradeModal()" class="w-full py-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm sm:text-base transition-colors border border-slate-300">
+              Choisir le Pack Essentiel (17,00 €)
+            </button>
+            <p class="text-center text-[11px] text-slate-400 mt-2">
+              Paiement 100% sécurisé • Garantie 7 jours
+            </p>
+          </div>
+        </div>
+
+        <!-- PLAN PREMIUM : PACK RÉUSSITE TOTALE (24,90 €) -->
+        <div class="bg-gradient-to-b from-blue-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border-2 border-amber-400 shadow-2xl flex flex-col justify-between relative transform lg:-translate-y-2">
+          
+          <!-- Top badge -->
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-extrabold text-xs uppercase px-4 py-1.5 rounded-full shadow-lg tracking-wider">
+            ★ RECOMMANDÉ PAR 87% DES ÉTUDIANTS ESI ★
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-4 mt-2">
+              <span class="text-xs font-bold text-amber-300 uppercase tracking-wider bg-amber-400/20 px-3 py-1 rounded-full border border-amber-400/30">COLLECTION INTÉGRALE</span>
+              <span class="text-xs bg-red-500 text-white font-bold px-2.5 py-0.5 rounded-full">-47% DE RÉDUCTION</span>
+            </div>
+            
+            <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-white mb-2">Pack Réussite Totale</h3>
+            <p class="text-xs sm:text-sm text-indigo-200 mb-6">
+              La solution exhaustive pour valider l'UE 2.11 dès le S1 et exceller en stage hospitalier.
+            </p>
+
+            <div class="mb-6 flex items-baseline gap-3">
+              <span class="font-heading font-black text-4xl sm:text-5xl text-amber-300">24,90 €</span>
+              <span class="text-sm text-slate-400 line-through">47,00 €</span>
+              <span class="text-xs text-indigo-200 font-medium">Paiement unique • Accès à vie</span>
+            </div>
+
+            <!-- Card Mockup Preview -->
+            <div class="mb-6 bg-slate-800/80 rounded-xl p-2 border border-slate-700">
+              <img src="assets/premium_card_mockup.png" alt="Pack Réussite Totale Mockup" class="w-full h-auto rounded-lg object-contain">
+            </div>
+
+            <!-- Feature list -->
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>Les 120 Fiches Visuelles C.A.P.S. Complètes</strong> (100% du référentiel UE 2.11)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>Les 8 Modules Thérapeutiques</strong> (Semestres 1, 3 et 5)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>Version iPad & Tablette Hyperliée</strong> (Onglets interactifs GoodNotes/Notability)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>Format Poche de Blouse Haute Résolution</strong> prêt à imprimer et plastifier</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <span><strong>Mises à Jour Gratuites à Vie</strong> selon les recommandations ANSM</span>
+              </li>
+              <li class="flex items-start gap-2.5 bg-amber-400/10 p-2.5 rounded-xl border border-amber-400/20">
+                <span class="text-amber-400 font-bold">🎁</span>
+                <span><strong>BONUS 1 :</strong> Le Mémo des Suffixes Magiques (<span class="line-through text-slate-400">15 €</span> <strong>OFFERT</strong>)</span>
+              </li>
+              <li class="flex items-start gap-2.5 bg-amber-400/10 p-2.5 rounded-xl border border-amber-400/20">
+                <span class="text-amber-400 font-bold">🎁</span>
+                <span><strong>BONUS 2 :</strong> Checklist Plastifiée des 5B & Pharmacovigilance (<span class="line-through text-slate-400">10 €</span> <strong>OFFERT</strong>)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Premium CTA Button -->
+          <div>
+            <a href="#checkout-premium" target="_self" class="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-900 font-extrabold text-base sm:text-lg shadow-xl shadow-amber-400/20 transition-all hover:-translate-y-0.5">
+              <span>TÉLÉCHARGER LE PACK RÉUSSITE TOTALE</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <p class="text-center text-[11px] text-slate-300 mt-2">
+              🔒 Accès immédiat par e-mail • Garantie stricte de 7 jours
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. SECTION LES GUIDES CLINIQUES SPÉCIALISÉS (ORDER BUMPS & COMBO) -->
+  <!-- ========================================================================= -->
+  <section class="py-16 md:py-24 bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">
+          Boîte à Outils Clinique Complète
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 mt-4 mb-4">
+          Les 4 Guides Cliniques Indispensables à la Pratique
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Disponibles au moment de finaliser votre commande en un seul clic, pour compléter votre formation de soignant.
+        </p>
+      </div>
+
+      <!-- 4 Bumps Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        
+        <!-- Bump 1 -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="overflow-hidden rounded-xl mb-3 bg-white border border-slate-100">
+              <img src="assets/bump1_calculs_doses.png" alt="Bump Calculs de Doses" class="w-full h-auto object-cover">
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-[11px] font-bold text-blue-600 uppercase">Guide N°1</span>
+              <span class="font-bold text-sm text-slate-900">7,90 €</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mb-1 leading-snug">Calculs de Doses & Débits</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Règles de trois, débits gouttes/min, seringues électriques (PSE) et dilutions pas à pas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bump 2 -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="overflow-hidden rounded-xl mb-3 bg-white border border-slate-100">
+              <img src="assets/bump2_normes_biologiques.png" alt="Bump Normes Biologiques" class="w-full h-auto object-cover">
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-[11px] font-bold text-emerald-600 uppercase">Guide N°2</span>
+              <span class="font-bold text-sm text-slate-900">6,90 €</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mb-1 leading-snug">Normes Biologiques & Bilans</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Valeurs normales (ionogramme, NFS, hémostase, troponine) et critères d'alerte médicale.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bump 3 -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="overflow-hidden rounded-xl mb-3 bg-white border border-slate-100">
+              <img src="assets/bump3_antidotes.png" alt="Bump Antidotes d'Urgence" class="w-full h-auto object-cover">
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-[11px] font-bold text-red-600 uppercase">Guide N°3</span>
+              <span class="font-bold text-sm text-slate-900">6,90 €</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mb-1 leading-snug">Antidotes & Intoxications</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Tableau des 30 antidotes vitaux (Naloxone, Vitamine K1, Protamine, Flumazénil, NAC).
+            </p>
+          </div>
+        </div>
+
+        <!-- Bump 4 -->
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="overflow-hidden rounded-xl mb-3 bg-white border border-slate-100">
+              <img src="assets/bump4_checklists_5b.png" alt="Bump Checklists 5B" class="w-full h-auto object-cover">
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-[11px] font-bold text-purple-600 uppercase">Guide N°4</span>
+              <span class="font-bold text-sm text-slate-900">6,90 €</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mb-1 leading-snug">Checklists & Règle des 5B</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Protocoles de sécurité à pie de cama, compatibilités de perfusion et pharmacovigilance.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BUMP 5 : LE COMBO 12,90 € -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-blue-400/40 shadow-xl flex flex-col md:flex-row items-center gap-6">
+        <div class="w-full md:w-1/3 shrink-0">
+          <img src="assets/bump5_combo.png" alt="Pack Intégral Soignant Combo" class="w-full h-auto rounded-xl shadow-lg border border-slate-700">
+        </div>
+        <div class="w-full md:w-2/3">
+          <div class="inline-flex items-center gap-2 bg-amber-400 text-slate-900 font-extrabold text-xs px-3 py-1 rounded-full mb-3">
+            LE COMBO PRIVILÈGE • ÉCONOMISEZ 55%
+          </div>
+          <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-white mb-2">
+            Pack Intégral Soignant : Les 4 Guides Réunis
+          </h3>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+            Recevez les 4 guides complémentaires réunis en un seul volume complet au moment de votre commande pour seulement <strong>12,90 €</strong> au lieu de <span class="line-through text-slate-400">28,60 €</span>. Une économie immédiate de plus de 15 €.
+          </p>
+          <div class="flex items-center gap-3">
+            <span class="text-2xl font-black text-amber-300">12,90 €</span>
+            <span class="text-xs text-slate-400 font-medium">Option activable au checkout</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 10. SECTION GARANTIE 7 JOURS STRICTE -->
+  <!-- ========================================================================= -->
+  <section class="py-16 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-md flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+        
+        <!-- Seal SVG -->
+        <div class="shrink-0">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 border-4 border-white shadow-xl flex flex-col items-center justify-center text-slate-900 text-center p-2">
+            <span class="text-[10px] font-black uppercase tracking-tighter">GARANTIE</span>
+            <span class="font-heading font-black text-2xl sm:text-3xl leading-none">7</span>
+            <span class="text-[9px] font-extrabold uppercase tracking-tight">JOURS</span>
+            <span class="text-[8px] font-bold">100% REMBOURSÉ</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+            Zéro Risque Pour Vous
+          </span>
+          <h2 class="font-heading font-bold text-xl sm:text-2xl text-slate-900 mt-2 mb-2">
+            Garantie Inconditionnelle de 7 Jours « Satisfait ou Remboursé »
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Téléchargez les fiches, feuilletez-les sur votre iPad ou imprimez votre première série de fiches de poche. Si vous n'avez pas l'impression d'apprendre <strong>3 fois plus vite</strong> qu'avec vos cours magistraux, envoyez-nous un simple e-mail dans les 7 jours. Nous vous remboursons l'intégralité de votre commande immédiatement, sans justification requise.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 11. FAQ SECTION -->
+  <!-- ========================================================================= -->
+  <section class="py-16 md:py-20 bg-white border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Foire Aux Questions
+        </span>
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-3 mb-2">
+          Questions Fréquentes des Étudiants ESI
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <details class="group bg-slate-50 rounded-2xl p-5 border border-slate-200 transition-all">
+          <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-slate-900 cursor-pointer list-none">
+            <span>Ces fiches sont-elles conformes au référentiel officiel des IFSI en France ?</span>
+            <span class="text-blue-600 transition-transform group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+            Oui, à 100%. Tout le contenu respecte scrupuleusement l'arrêté ministériel régissant le référentiel de formation en soins infirmiers pour l'unité d'enseignement <strong>UE 2.11 (« Pharmacologie et thérapeutiques »)</strong> ainsi que les recommandations officielles de l'Agence Nationale de Sécurité du Médicament (ANSM).
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 rounded-2xl p-5 border border-slate-200 transition-all">
+          <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-slate-900 cursor-pointer list-none">
+            <span>Sous quel format vais-je recevoir les fiches ?</span>
+            <span class="text-blue-600 transition-transform group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+            Vous recevez un accès immédiat à des fichiers PDF vectoriels en ultra-haute définition. Le Pack Réussite Totale inclut la version optimisée avec onglets hyperliés pour tablettes (GoodNotes, Notability, Samsung Notes) ainsi que la version compacte mise en page spécifiquement pour être imprimée et glissée dans votre poche de blouse.
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 rounded-2xl p-5 border border-slate-200 transition-all">
+          <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-slate-900 cursor-pointer list-none">
+            <span>Est-ce utile pour une 1re, 2e ou 3e année d'IFSI ?</span>
+            <span class="text-blue-600 transition-transform group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+            Absolument. Les notions fondamentales et calculs de doses sont étudiés dès le Semestre 1. Les grandes familles thérapeutiques (antibiotiques, anticoagulants, antalgiques) couvrent les partiels des Semestres 1 et 3. Enfin, les thérapeutiques spécifiques (réanimation, urgences, psychiatrie) accompagnent vos stages jusqu'au diplôme d'État en 3e année.
+          </p>
+        </details>
+
+        <details class="group bg-slate-50 rounded-2xl p-5 border border-slate-200 transition-all">
+          <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-slate-900 cursor-pointer list-none">
+            <span>Comment fonctionne la garantie de 7 jours ?</span>
+            <span class="text-blue-600 transition-transform group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+            Si après avoir testé les fiches vous n'êtes pas entièrement convaincu de leur efficacité, il vous suffit de répondre à l'e-mail de confirmation de votre commande dans un délai de 7 jours. Vous serez intégralement remboursé sous 24 à 48 heures.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 12. BOTTOM CTA SECTION -->
+  <!-- ========================================================================= -->
+  <section class="py-16 bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-white mb-4">
+        Prêt à Valider l'UE 2.11 et à Partir en Stage l'Esprit Léger ?
+      </h2>
+      <p class="text-blue-100 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+        Téléchargez instantanément vos 120 fiches cliniques C.A.P.S. et rejoignez les milliers d'étudiants ESI qui révisent sans stress.
+      </p>
+      <a href="#tarifs" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-900 font-extrabold text-base sm:text-lg shadow-xl shadow-amber-400/20 transition-all hover:-translate-y-1">
+        ACCÉDER IMMÉDIATEMENT À PHARMA-PASS IFSI
+      </a>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-blue-200">
+        <span>✓ Téléchargement instantané</span>
+        <span>✓ Paiement sécurisé CB & PayPal</span>
+        <span>✓ Garantie 7 jours</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-10 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left mb-8">
+        <div>
+          <span class="font-heading font-bold text-white text-base">PHARMA-PASS IFSI™</span>
+          <p class="text-[11px] text-slate-500 mt-1">Le support de révision visuel de référence pour l'UE 2.11.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-xs">
+          <a href="#" class="hover:text-white transition-colors">Mentions Légales</a>
+          <a href="#" class="hover:text-white transition-colors">Politique de Confidentialité</a>
+          <a href="#" class="hover:text-white transition-colors">Conditions Générales de Vente (CGV)</a>
+          <a href="#" class="hover:text-white transition-colors">Contact Support</a>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-6 text-[11px] text-slate-500 text-center leading-relaxed">
+        <p>© 2026 PHARMA-PASS IFSI™. Tous droits réservés. Destiné à l'apprentissage et à la révision des étudiants en soins infirmiers. Ne remplace pas la prescription médicale ni le jugement clinique d'un professionnel diplômé.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL DE SURCLASSEMENT (UPGRADE DE 17 € À 24,90 €) -->
+  <!-- ========================================================================= -->
+  <div id="upgrade-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative transform transition-all animate-in fade-in zoom-in duration-200">
+      
+      <!-- Close button -->
+      <button onclick="closeUpgradeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
+        <span>⚡</span> OFFRE PRIVILÈGE DE SURCLASSEMENT
+      </div>
+
+      <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-slate-900 mb-2 leading-snug">
+        Attendez une seconde avant de valider votre commande !
+      </h3>
+      
+      <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+        Pour seulement <strong>7,90 € de différence</strong> (le prix d'un café et d'un croissant), ne laissez pas de côté les 70 autres médicaments du programme et repartez avec la collection intégrale :
+      </p>
+
+      <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-200 mb-6 text-xs space-y-2.5 text-slate-700">
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span><strong>120 fiches au lieu de 50</strong> (100% de l'UE 2.11 S1, S3, S5)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span><strong>Format interactif iPad</strong> (onglets avec index clicable)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span><strong>Format poche de blouse</strong> prêt à plastifier pour les stages</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span><strong>2 Bonus Inclus :</strong> Suffixes magiques + 5B (valeur 25 €)</span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Upgrade CTA -->
+        <a href="#checkout-premium" target="_self" onclick="closeUpgradeModal()" class="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-900 font-extrabold text-sm sm:text-base shadow-lg transition-all text-center">
+          OUI ! JE PASSE AU PACK RÉUSSITE TOTALE (24,90 €)
+        </a>
+        
+        <!-- Continue Basic -->
+        <a href="#checkout-basic" target="_self" onclick="closeUpgradeModal()" class="w-full inline-flex items-center justify-center py-2 text-xs font-semibold text-slate-400 hover:text-slate-600 transition-colors text-center">
+          Non merci, je conserve le pack limité à 17,00 €
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING NOTIFICATIONS (SOCIAL PROOF EN TEMPS RÉEL) -->
+  <!-- ========================================================================= -->
+  <div id="live-toast" class="fixed bottom-4 left-4 z-40 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-2xl border border-slate-200 flex items-center gap-3 transition-all duration-500 transform translate-y-32 opacity-0 max-w-xs sm:max-w-sm">
+    <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0 font-bold text-sm">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <div class="text-left text-xs">
+      <p id="toast-text" class="text-slate-800 font-medium leading-tight">
+        <strong>Élodie de Lille</strong> vient de commander le <span class="text-blue-600 font-bold">Pack Réussite Totale</span>
+      </p>
+      <span id="toast-time" class="text-[10px] text-slate-400">Il y a 3 minutes</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE STICKY BUY BAR -->
+  <!-- ========================================================================= -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 p-3 flex items-center justify-between shadow-lg">
+    <div>
+      <span class="text-xs text-slate-500 line-through block leading-none">47,00 €</span>
+      <span class="text-lg font-black text-slate-900 leading-tight">24,90 €</span>
+    </div>
+    <a href="#tarifs" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-md">
+      Télécharger (24,90 €)
+    </a>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    // 1. CAROUSEL LOGIC
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const tabs = document.querySelectorAll('.carousel-tab');
+    const slideNumberEl = document.getElementById('slide-number');
+
+    function updateCarousel() {
+      slides.forEach((slide, idx) => {
+        if (idx === currentSlide) {
+          slide.classList.remove('hidden');
+          slide.classList.add('block');
+        } else {
+          slide.classList.add('hidden');
+          slide.classList.remove('block');
+        }
+      });
+      tabs.forEach((tab, idx) => {
+        if (idx === currentSlide) {
+          tab.classList.remove('bg-slate-800', 'text-slate-300');
+          tab.classList.add('bg-blue-600', 'text-white');
+        } else {
+          tab.classList.add('bg-slate-800', 'text-slate-300');
+          tab.classList.remove('bg-blue-600', 'text-white');
+        }
+      });
+      if (slideNumberEl) {
+        slideNumberEl.textContent = (currentSlide + 1);
+      }
+    }
+
+    function setSlide(idx) {
+      currentSlide = idx;
+      updateCarousel();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // 2. STUDY TIME CALCULATOR LOGIC
+    const hoursSlider = document.getElementById('hours-slider');
+    const ueSlider = document.getElementById('ue-slider');
+    const hoursDisplay = document.getElementById('hours-display');
+    const ueDisplay = document.getElementById('ue-display');
+    const savedHoursEl = document.getElementById('saved-hours');
+    const stressEl = document.getElementById('stress-reduction');
+    const gradeEl = document.getElementById('grade-boost');
+
+    function calculateSavings() {
+      const hours = parseInt(hoursSlider.value);
+      const ues = parseInt(ueSlider.value);
+
+      hoursDisplay.textContent = hours + ' h';
+      ueDisplay.textContent = ues + ' UE' + (ues > 1 ? 's' : '');
+
+      // Formula: roughly 2 hours saved per week per UE over a 14-week semester
+      const totalSaved = Math.round(hours * 0.45 * 14 * (ues / 3.5));
+      savedHoursEl.textContent = '+' + totalSaved + ' Heures';
+
+      const stressReduction = Math.min(88, Math.round(60 + (hours * 0.8) + (ues * 2)));
+      stressEl.textContent = '-' + stressReduction + '% estimé';
+
+      const gradeBoost = (3.5 + (ues * 0.3)).toFixed(1).replace('.', ',');
+      gradeEl.textContent = '+' + gradeBoost + ' points';
+    }
+
+    if (hoursSlider && ueSlider) {
+      hoursSlider.addEventListener('input', calculateSavings);
+      ueSlider.addEventListener('input', calculateSavings);
+      calculateSavings();
+    }
+
+    // 3. UPGRADE MODAL LOGIC
+    const modal = document.getElementById('upgrade-modal');
+    function openUpgradeModal() {
+      modal.classList.add('modal-active');
+    }
+    function closeUpgradeModal() {
+      modal.classList.remove('modal-active');
+    }
+
+    // 4. COUNTDOWN TIMER LOGIC
+    let timeRemaining = (4 * 3600) + (27 * 60) + 49;
+    const hoursEl = document.getElementById('countdown-hours');
+    const minsEl = document.getElementById('countdown-minutes');
+    const secsEl = document.getElementById('countdown-seconds');
+
+    setInterval(() => {
+      if (timeRemaining > 0) {
+        timeRemaining--;
+        const h = Math.floor(timeRemaining / 3600);
+        const m = Math.floor((timeRemaining % 3600) / 60);
+        const s = timeRemaining % 60;
+        if (hoursEl) hoursEl.textContent = h.toString().padStart(2, '0');
+        if (minsEl) minsEl.textContent = m.toString().padStart(2, '0');
+        if (secsEl) secsEl.textContent = s.toString().padStart(2, '0');
+      }
+    }, 1000);
+
+    // 5. LIVE RECENT PURCHASES NOTIFICATIONS (TOAST)
+    const toastData = [
+      { name: "Élodie de Lille", action: "vient de commander le", item: "Pack Réussite Totale", time: "Il y a 3 minutes" },
+      { name: "Maxime de Marseille", action: "vient d'ajouter le", item: "Pack Intégral Bumps", time: "Il y a 6 minutes" },
+      { name: "Camille de Lyon", action: "vient de commander le", item: "Pack Réussite Totale", time: "Il y a 1 minute" },
+      { name: "Sarah de Bordeaux", action: "vient de valider sa commande de", item: "Pharma-Pass IFSI", time: "Il y a 8 minutes" },
+      { name: "Antoine de Nantes", action: "vient de commander le", item: "Pack Réussite Totale", time: "Il y a 4 minutes" },
+      { name: "Inès de Toulouse", action: "vient de télécharger les", item: "120 Fiches CAPS", time: "Il y a 2 minutes" }
+    ];
+
+    let toastIndex = 0;
+    const toastEl = document.getElementById('live-toast');
+    const toastTextEl = document.getElementById('toast-text');
+    const toastTimeEl = document.getElementById('toast-time');
+
+    function showNextToast() {
+      if (!toastEl || !toastTextEl || !toastTimeEl) return;
+      const data = toastData[toastIndex];
+      toastTextEl.innerHTML = `<strong>${data.name}</strong> ${data.action} <span class="text-blue-600 font-bold">${data.item}</span>`;
+      toastTimeEl.textContent = data.time;
+
+      // Slide in
+      toastEl.classList.remove('translate-y-32', 'opacity-0');
+      toastEl.classList.add('translate-y-0', 'opacity-100');
+
+      // Hide after 5 seconds
+      setTimeout(() => {
+        toastEl.classList.remove('translate-y-0', 'opacity-100');
+        toastEl.classList.add('translate-y-32', 'opacity-0');
+      }, 5000);
+
+      toastIndex = (toastIndex + 1) % toastData.length;
+    }
+
+    // Launch first toast after 3 seconds, then every 11 seconds
+    setTimeout(() => {
+      showNextToast();
+      setInterval(showNextToast, 11000);
+    }, 3000);
+  </script>
+</body>
+</html>
