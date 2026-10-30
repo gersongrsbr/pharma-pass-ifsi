@@ -486,7 +486,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         
         <!-- PLAN BÁSICO (PACK ESSENTIEL 17,00 €) -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-borderline shadow-soft flex flex-col justify-between">
+        <div class="order-2 md:order-1 bg-white rounded-2xl p-6 sm:p-8 border border-borderline shadow-soft flex flex-col justify-between">
           <div>
             <h3 class="font-display font-extrabold text-xl text-brand uppercase mb-2">PACK ESSENTIEL</h3>
             <p class="text-xs sm:text-sm text-muted mb-4">La base clinique pour réviser l'UE 2.11</p>
@@ -530,7 +530,7 @@
         </div>
 
         <!-- PLAN DESTACADO (PACK RÉUSSITE TOTALE 24,90 €) -->
-        <div class="bg-brand rounded-2xl p-6 sm:p-8 border-2 border-cta shadow-card flex flex-col justify-between text-white relative">
+        <div class="order-1 md:order-2 bg-brand rounded-2xl p-6 sm:p-8 border-2 border-cta shadow-card flex flex-col justify-between text-white relative">
           
           <div class="absolute -top-3.5 right-6 bg-warning text-brand font-display font-extrabold text-[11px] uppercase px-3 py-1 rounded-full shadow-md">
             ★ PLUS DE 85% DES ÉTUDIANTS CHOISISSENT CE PACK
@@ -549,9 +549,9 @@
               </div>
             </div>
 
-            <!-- Mockup de la oferta en tarjeta destacada -->
-            <div class="rounded-lg p-2 bg-white/5 border border-white/10 mb-6">
-              <img src="assets/premium_card_mockup.png" alt="Pack Réussite Totale Mockup" class="w-full h-36 object-contain">
+            <!-- Mockup de la oferta en tarjeta destacada (Grande y Visible) -->
+            <div class="rounded-xl overflow-hidden p-2 sm:p-3 bg-white/10 border border-white/20 mb-6 flex items-center justify-center">
+              <img src="assets/premium_card_mockup.png" alt="Pack Réussite Totale Mockup" class="w-full h-auto max-h-[380px] object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-300">
             </div>
 
             <ul class="space-y-3 text-xs sm:text-sm text-white mb-8 border-t border-white/15 pt-6">
@@ -707,6 +707,34 @@
       document.getElementById('upgradeModal').classList.add('hidden');
       document.body.classList.remove('modal-open');
     }
+  </script>
+
+  <!-- UTM & Parameter Forwarding to Hotmart -->
+  <script>
+    (function() {
+      function forwardParams() {
+        const currentParams = new URLSearchParams(window.location.search);
+        if ([...currentParams.keys()].length === 0) return;
+        
+        const links = document.querySelectorAll('a[href*="pay.hotmart.com"]');
+        links.forEach(link => {
+          try {
+            const url = new URL(link.href);
+            currentParams.forEach((value, key) => {
+              url.searchParams.set(key, value);
+            });
+            link.href = url.toString();
+          } catch (e) {
+            console.error('Error updating checkout URL params:', e);
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', forwardParams);
+      } else {
+        forwardParams();
+      }
+    })();
   </script>
 </body>
 </html>
