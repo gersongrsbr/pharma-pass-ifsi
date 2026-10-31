@@ -45,8 +45,8 @@
             display: ['Montserrat', 'sans-serif'],
           },
           boxShadow: {
-            'soft': '0 4px 20px -6px rgba(99, 42, 11, 0.12)',
-            'card': '0 10px 34px -14px rgba(99, 42, 11, 0.22)',
+            'soft': '0 4px 20px -6px rgba(10, 37, 64, 0.08)',
+            'card': '0 10px 34px -14px rgba(10, 37, 64, 0.18)',
             'cta': '0 14px 26px -10px rgba(0, 146, 45, 0.50), 0 6px 14px -6px rgba(0, 146, 45, 0.40)',
           }
         }
@@ -72,37 +72,64 @@
     body.modal-open {
       overflow: hidden;
     }
+    /* Hide scrollbar for carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
-<body class="bg-white text-charcoal font-sans antialiased selection:bg-brand selection:text-white">
+<body class="bg-white text-charcoal font-sans antialiased selection:bg-brand selection:text-white relative">
 
-  <!-- 1. BARRA SUPERIOR (HEADER INFORMATIVO ATLAS) -->
-  <header class="bg-brand text-white border-b border-borderline py-3 px-4">
+  <!-- 1. BARRA SUPERIOR ROTATIVA (TICKER ROTATIVO DE BENEFICIOS) -->
+  <header class="bg-brand-dark text-white border-b border-white/10 py-2.5 px-4 sticky top-0 z-40 backdrop-blur-md bg-opacity-95">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="text-warning text-sm">⚡</span>
-        <p class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-wide">
-          OFFRE DE RENTRÉE IFSI 2026 : -53% SUR LE PACK RÉUSSITE TOTALE
-        </p>
+      <div class="flex items-center gap-2 overflow-hidden flex-1 mr-4">
+        <span class="text-warning text-sm flex-shrink-0 animate-pulse">⚡</span>
+        <div id="tickerContainer" class="relative h-6 overflow-hidden flex-1">
+          <div id="ticker1" class="ticker-item transition-all duration-500 transform translate-y-0 opacity-100 flex items-center">
+            <p class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-wide truncate">
+              OFFRE DE LANCEMENT IFSI 2026 : -53% SUR LE PACK RÉUSSITE TOTALE
+            </p>
+          </div>
+          <div id="ticker2" class="ticker-item transition-all duration-500 transform translate-y-8 opacity-0 flex items-center absolute inset-0">
+            <p class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-wide text-warning truncate">
+              🛡️ GARANTIE INCONDITIONNELLE 7 JOURS « SATISFAIT OU REMBOURSÉ »
+            </p>
+          </div>
+          <div id="ticker3" class="ticker-item transition-all duration-500 transform translate-y-8 opacity-0 flex items-center absolute inset-0">
+            <p class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-wide truncate">
+              📑 100% CONFORME RÉFÉRENTIEL UE 2.11 & RECOMMANDATIONS ANSM
+            </p>
+          </div>
+          <div id="ticker4" class="ticker-item transition-all duration-500 transform translate-y-8 opacity-0 flex items-center absolute inset-0">
+            <p class="font-display font-extrabold text-xs sm:text-sm uppercase tracking-wide text-cta truncate">
+              📱 TÉLÉCHARGEMENT IMMÉDIAT • FORMAT POCHE & IPAD INTERACTIF
+            </p>
+          </div>
+        </div>
       </div>
-      <a href="#tarifs" class="hidden sm:inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-xs uppercase px-4 py-1.5 rounded-[14px] transition-all">
+      <a href="#tarifs" class="hidden sm:inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-xs uppercase px-4 py-1.5 rounded-full shadow-md transition-all hover:scale-105 flex-shrink-0">
         EN PROFITER MAINTENANT
       </a>
     </div>
   </header>
 
   <!-- 2. HERO SECTION -->
-  <section class="pt-10 pb-16 sm:pb-20 lg:pb-24 px-4 bg-white">
+  <section class="pt-8 sm:pt-12 pb-14 sm:pb-20 lg:pb-24 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
       
       <!-- Pill de confianza -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cta/40 bg-cta/10 text-cta font-semibold text-xs uppercase tracking-wider mb-6">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cta/40 bg-cta/10 text-cta font-semibold text-xs uppercase tracking-wider mb-5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         <span>CONFORME AU PROGRAMME OFFICIEL DES IFSI DE FRANCE & ANSM</span>
       </div>
 
       <!-- H1 Hero Atlas -->
-      <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[54px] text-brand leading-[1.08] tracking-[-0.01em] uppercase max-w-4xl mx-auto mb-6">
+      <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[54px] text-brand leading-[1.1] tracking-[-0.01em] uppercase max-w-4xl mx-auto mb-5">
         VALIDEZ L'UE 2.11 DE PHARMACOLOGIE SANS RATTRAPAGES ET SÉCURISEZ VOS STAGES
       </h1>
 
@@ -120,7 +147,7 @@
 
       <!-- Botón Primario CTA (DESPUÉS DEL HERO) -->
       <div class="max-w-xl mx-auto mb-6">
-        <a href="#tarifs" class="w-full h-[52px] sm:h-[56px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-sm sm:text-base uppercase tracking-wider rounded-full shadow-cta transition-all hover:scale-[1.01]">
+        <a href="#tarifs" class="w-full h-[54px] sm:h-[58px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-sm sm:text-base uppercase tracking-wider rounded-full shadow-cta transition-all hover:scale-[1.01]">
           TÉLÉCHARGER MES 120 FICHES MAINTENANT
         </a>
       </div>
@@ -135,96 +162,240 @@
     </div>
   </section>
 
-  <!-- 3. BARRA DE BENEFICIOS INMEDIATOS -->
-  <section class="py-12 bg-sand border-y border-borderline px-4">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="p-4 bg-white rounded-xl border border-borderline shadow-soft">
+  <!-- 3. BARRA DE BENEFICIOS INMEDIATOS (CON ICONOS CLÍNICOS DEDICADOS) -->
+  <section class="py-10 sm:py-12 bg-sand border-y border-borderline px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+      
+      <div class="p-5 bg-white rounded-2xl border border-borderline shadow-soft flex flex-col items-center justify-center hover:border-brand/30 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
         <p class="font-display font-extrabold text-2xl sm:text-3xl text-brand mb-1">120 FICHES</p>
         <p class="text-xs sm:text-sm text-muted font-medium">Programme UE 2.11 complet</p>
       </div>
-      <div class="p-4 bg-white rounded-xl border border-borderline shadow-soft">
+
+      <div class="p-5 bg-white rounded-2xl border border-borderline shadow-soft flex flex-col items-center justify-center hover:border-brand/30 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-cta/10 text-cta flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
         <p class="font-display font-extrabold text-2xl sm:text-3xl text-brand mb-1">3 MINUTES</p>
         <p class="text-xs sm:text-sm text-muted font-medium">Pour mémoriser chaque DCI</p>
       </div>
-      <div class="p-4 bg-white rounded-xl border border-borderline shadow-soft">
+
+      <div class="p-5 bg-white rounded-2xl border border-borderline shadow-soft flex flex-col items-center justify-center hover:border-brand/30 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-warning/10 text-warning flex items-center justify-center mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
         <p class="font-display font-extrabold text-2xl sm:text-3xl text-brand mb-1">0 FAUTE</p>
-        <p class="text-xs sm:text-sm text-muted font-medium">Méthode de calculs de doses</p>
+        <p class="text-xs sm:text-sm text-muted font-medium">Méthode calculs & débits</p>
       </div>
-      <div class="p-4 bg-white rounded-xl border border-borderline shadow-soft">
+
+      <div class="p-5 bg-white rounded-2xl border border-borderline shadow-soft flex flex-col items-center justify-center hover:border-brand/30 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-3">
+          <span class="text-warning text-xl">★★★★★</span>
+        </div>
         <p class="font-display font-extrabold text-2xl sm:text-3xl text-brand mb-1">4.9 / 5</p>
         <p class="text-xs sm:text-sm text-muted font-medium">+2 480 étudiants équipés</p>
       </div>
+
     </div>
   </section>
 
-  <!-- 4. SECTION DE TESTIMONIOS (RÉULTATS RÉELS ESI) -->
-  <section id="temoignages" class="py-16 sm:py-20 lg:py-24 px-4 bg-white">
+  <!-- 4. NOUVELLE SECTION DE TESTIMONIOS : AVATARS EN ACTION (ZONA SUPERIOR) -->
+  <section class="py-16 sm:py-20 lg:py-24 px-4 bg-white overflow-hidden">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sand border border-borderline shadow-sm mb-3">
+      
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sand border border-borderline shadow-sm mb-3">
           <span class="text-warning text-sm">★★★★★</span>
-          <span class="font-display font-extrabold text-xs text-brand">4.9/5 PAR LES ÉTUDIANTS IFSI</span>
+          <span class="font-display font-extrabold text-xs text-brand">RÉSULTATS OBSERVÉS SUR LE TERRAIN</span>
         </div>
         <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-brand uppercase leading-tight tracking-[-0.02em] max-w-3xl mx-auto">
-          CE QUE DISENT LES ÉTUDIANTS QUI ONT VALIDÉ LEUR SEMESTRE
+          LES ÉTUDIANTS IFSI EN ACTION : DU SERVICE AUX RÉVISIONS
         </h2>
-        <p class="text-muted text-sm sm:text-base mt-3 max-w-xl mx-auto">
-          Témoignages vérifiés d'étudiants en 1ère, 2ème et 3ème année dans les IFSI de Paris, Lyon, Bordeaux et Marseille.
+        <p class="text-muted text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+          Découvrez comment les étudiants de 1ère, 2ème et 3ème année utilisent les fiches de poche et l'Atlas iPad en conditions réelles de stage et de révision.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Testimonio 1 -->
-        <div class="bg-sand p-6 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="text-warning text-sm mb-3">★★★★★</div>
-            <p class="text-charcoal text-sm leading-relaxed italic mb-4">
-              « J'avais eu 8/20 au partiel blanc. Les pavés de cours me donnaient des angoisses. Avec PHARMA-PASS, j'ai révisé 20 minutes par jour pendant 3 semaines : 17,5/20 au partiel final ! Le guide de calculs de doses est juste magique. »
-            </p>
-          </div>
-          <div class="border-t border-borderline/80 pt-4 flex items-center gap-3">
-            <img src="assets/avatar_camille.jpg" alt="Camille L." class="w-11 h-11 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
-            <div>
-              <p class="font-display font-extrabold text-xs text-brand uppercase">Camille L.</p>
-              <p class="text-[11px] text-muted">ESI 2e Année • IFSI Saint-Joseph (Paris)</p>
+      <!-- Carrusel Interactivo de Avatares en Acción -->
+      <div class="relative max-w-5xl mx-auto">
+        
+        <!-- Flechas de navegación -->
+        <button id="prevActionBtn" onclick="manualActionScroll(-1)" aria-label="Précédent" class="absolute -left-2 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-brand border border-borderline shadow-card flex items-center justify-center hover:bg-sand transition-all focus:outline-none hover:scale-105">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="nextActionBtn" onclick="manualActionScroll(1)" aria-label="Suivant" class="absolute -right-2 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-brand border border-borderline shadow-card flex items-center justify-center hover:bg-sand transition-all focus:outline-none hover:scale-105">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <!-- Track del carrusel -->
+        <div id="actionCarouselTrack" class="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-2">
+          
+          <!-- Slide 1: Selfie Lyon -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_01_selfie_lyon.png" alt="Camille en révision avec les fiches PHARMA-PASS" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-brand/90 backdrop-blur-sm text-white font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                📸 SELFIE ÉTUDIANTE
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">Note partiel : 17,5/20</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « Après un 8/20 au partiel blanc, ces fiches de poche reliées ont tout changé. 20 minutes par jour et j'ai validé avec mention ! »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-brand text-white font-bold text-xs flex items-center justify-center">CL</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Camille L.</p>
+                  <p class="text-[11px] text-muted">ESI 2e Année • IFSI Croix-Rouge (Lyon)</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Slide 2: POV Chariot Urgences -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_02_pov_carro.png" alt="POV chariot de soins et dilution KCl en stage" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-cta/90 backdrop-blur-sm text-white font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                🏥 VUE DU TERRAIN (POV)
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">Stage Urgences Validé</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « Devant le chariot avec l'IDE tutrice : vérification de la règle de dilution KCl en 15 secondes chrono. Rigueur récompensée par une excellente note. »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-cta text-white font-bold text-xs flex items-center justify-center">TD</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Thomas D.</p>
+                  <p class="text-[11px] text-muted">ESI 3e Année • Urgences Hôpital Nord</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Bibliothèque iPad Pro -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_03_bibliotheque.png" alt="Révision sur iPad et fiches imprimées en bibliothèque" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-brand/90 backdrop-blur-sm text-white font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                📚 BIBLIOTHÈQUE & IPAD
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">Recherche en 3 clics</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « La version interactive sur iPad me permet de chercher n'importe quelle DCI instantanément pendant les révisions de groupe. Gain de temps colossal. »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-brand text-white font-bold text-xs flex items-center justify-center">SM</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Sarah M.</p>
+                  <p class="text-[11px] text-muted">ESI 1re Année • IFSI Pellegrin (Bordeaux)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: POV Bureau Nuit Calculs -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_04_pov_bureau.png" alt="Calculs de doses zéro faute et préparation partiel" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-warning/90 backdrop-blur-sm text-brand font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                🧮 CALCULS ZÉRO FAUTE
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">20/20 aux calculs</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « La formule de conversion en croix simplifiée m'a évité le piège du zéro éliminatoire. Tous les calculs de mon partiel sont tombés juste. »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-warning text-brand font-bold text-xs flex items-center justify-center">LB</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Léa B.</p>
+                  <p class="text-[11px] text-muted">ESI 2e Année • IFSI La Blancarde (Marseille)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: Selfie Couloir Paris -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_05_selfie_paris.png" alt="Lucas avec ses fiches de poche en stage à Paris" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-brand/90 backdrop-blur-sm text-white font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                🩺 DANS LA BLOUSE
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">Passe dans la poche</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « Format parfait qui tient dans la poche de la blouse. Quand un médecin pose une colle en visite, le réflexe est immédiat. »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-brand text-white font-bold text-xs flex items-center justify-center">LG</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Lucas G.</p>
+                  <p class="text-[11px] text-muted">ESI 3e Année • IFSI Saint-Antoine (Paris)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6: Binôme en Salle de Repos -->
+          <div class="w-[85vw] sm:w-[360px] flex-shrink-0 snap-center bg-sand rounded-2xl border border-borderline shadow-card overflow-hidden flex flex-col">
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-white">
+              <img src="assets/avatar_action_06_binome_gardes.png" alt="Binôme d'étudiantes révisant en pause de garde" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+              <span class="absolute top-3 left-3 bg-cta/90 backdrop-blur-sm text-white font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full">
+                🤝 ENTRAÎNEMENT CROISÉ
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1 text-warning text-xs mb-2">★★★★★ <span class="text-muted text-[11px] font-semibold text-brand ml-1">Rattrapages évités</span></div>
+                <p class="text-charcoal text-xs sm:text-sm italic leading-relaxed mb-3">
+                  « On se teste mutuellement en pause de garde. La structure C.A.P.S. permet de retenir sans s'embrouiller avec les contre-indications. »
+                </p>
+              </div>
+              <div class="border-t border-borderline pt-3 flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-cta text-white font-bold text-xs flex items-center justify-center">JR</div>
+                <div>
+                  <p class="font-display font-extrabold text-xs text-brand uppercase">Julie R. & Inès</p>
+                  <p class="text-[11px] text-muted">ESI 2e Année • IFSI CHU Nantes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Testimonio 2 -->
-        <div class="bg-sand p-6 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="text-warning text-sm mb-3">★★★★★</div>
-            <p class="text-charcoal text-sm leading-relaxed italic mb-4">
-              « En stage aux urgences, l'infirmière tutrice m'a demandé la surveillance de la Gentamicine. J'ai sorti la fiche de ma poche en 15 secondes. Elle m'a félicité pour ma rigueur. Elles ne quittent plus ma blouse. »
-            </p>
-          </div>
-          <div class="border-t border-borderline/80 pt-4 flex items-center gap-3">
-            <img src="assets/avatar_thomas.jpg" alt="Thomas D." class="w-11 h-11 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
-            <div>
-              <p class="font-display font-extrabold text-xs text-brand uppercase">Thomas D.</p>
-              <p class="text-[11px] text-muted">ESI 3e Année • IFSI Croix-Rouge (Lyon)</p>
-            </div>
-          </div>
+        <!-- Dots indicator -->
+        <div id="actionDots" class="flex justify-center items-center gap-2 mt-4">
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-brand transition-all" onclick="goActionSlide(0)"></button>
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-borderline transition-all" onclick="goActionSlide(1)"></button>
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-borderline transition-all" onclick="goActionSlide(2)"></button>
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-borderline transition-all" onclick="goActionSlide(3)"></button>
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-borderline transition-all" onclick="goActionSlide(4)"></button>
+          <button class="dot-btn w-2.5 h-2.5 rounded-full bg-borderline transition-all" onclick="goActionSlide(5)"></button>
         </div>
 
-        <!-- Testimonio 3 -->
-        <div class="bg-sand p-6 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="text-warning text-sm mb-3">★★★★★</div>
-            <p class="text-charcoal text-sm leading-relaxed italic mb-4">
-              « La méthode C.A.P.S. permet de comprendre au lieu d'apprendre bêtement par cœur des listes infinies d'effets secondaires. C'est le meilleur investissement de mes trois années d'études. »
-            </p>
-          </div>
-          <div class="border-t border-borderline/80 pt-4 flex items-center gap-3">
-            <img src="assets/avatar_sarah.jpg" alt="Sarah M." class="w-11 h-11 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
-            <div>
-              <p class="font-display font-extrabold text-xs text-brand uppercase">Sarah M.</p>
-              <p class="text-[11px] text-muted">ESI 1ère Année • IFSI Pellegrin (Bordeaux)</p>
-            </div>
-          </div>
-        </div>
       </div>
+
     </div>
   </section>
 
@@ -241,24 +412,24 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-xl border border-borderline shadow-soft">
-          <div class="text-warning text-xl mb-3">⚠️</div>
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft">
+          <div class="w-10 h-10 rounded-xl bg-warning/10 text-warning flex items-center justify-center font-bold text-lg mb-4">⚠️</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">Des Manuels de 600 Pages Indigestes</h3>
           <p class="text-muted text-sm leading-relaxed">
             Des pavés théoriques denses où les informations cliniques vitales sont noyées dans des détails biochimiques jamais demandés aux examens ni en stage.
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border border-borderline shadow-soft">
-          <div class="text-warning text-xl mb-3">⚠️</div>
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft">
+          <div class="w-10 h-10 rounded-xl bg-warning/10 text-warning flex items-center justify-center font-bold text-lg mb-4">⚠️</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">La Peur du 0 Éliminatoire aux Calculs</h3>
           <p class="text-muted text-sm leading-relaxed">
             Une simple virgule déplacée sur une dilution en gouttes/minute ou un pousse-seringue électrique (PSE), et c'est le 0 éliminatoire immédiat aux partiels.
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border border-borderline shadow-soft">
-          <div class="text-warning text-xl mb-3">⚠️</div>
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft">
+          <div class="w-10 h-10 rounded-xl bg-warning/10 text-warning flex items-center justify-center font-bold text-lg mb-4">⚠️</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">Le Stress Panique devant le Chariot</h3>
           <p class="text-muted text-sm leading-relaxed">
             Le premier jour de stage, sous le regard de l'infirmière tutrice, incapable de retrouver en 30 secondes la surveillance clinique d'un médicament à risque.
@@ -282,7 +453,7 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-xl text-charcoal shadow-soft">
+        <div class="bg-white p-6 rounded-2xl text-charcoal shadow-soft">
           <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-display font-extrabold text-lg mb-4">C</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">CIBLE</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
@@ -290,7 +461,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl text-charcoal shadow-soft">
+        <div class="bg-white p-6 rounded-2xl text-charcoal shadow-soft">
           <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-display font-extrabold text-lg mb-4">A</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">ACTION</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
@@ -298,7 +469,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl text-charcoal shadow-soft">
+        <div class="bg-white p-6 rounded-2xl text-charcoal shadow-soft">
           <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-display font-extrabold text-lg mb-4">P</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">PRÉCAUTIONS</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
@@ -306,7 +477,7 @@
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl text-charcoal shadow-soft">
+        <div class="bg-white p-6 rounded-2xl text-charcoal shadow-soft">
           <div class="w-10 h-10 rounded-lg bg-brand text-white flex items-center justify-center font-display font-extrabold text-lg mb-4">S</div>
           <h3 class="font-display font-extrabold text-base text-brand mb-2">SURVEILLANCE</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
@@ -318,8 +489,8 @@
   </section>
 
   <!-- 7. GALERIE MARQUEE D'INTÉRIEURS RÉELS (ATLAS RUNNER) -->
-  <section class="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden border-b border-borderline">
-    <div class="max-w-6xl mx-auto px-4 text-center mb-10">
+  <section class="py-14 sm:py-18 bg-white overflow-hidden border-b border-borderline">
+    <div class="max-w-6xl mx-auto px-4 text-center mb-8">
       <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em]">
         FEUILLETEZ LES FICHES RÉELLES DU PROGRAMME
       </h2>
@@ -331,150 +502,364 @@
     <!-- Tira horizontal infinita Marquee -->
     <div class="w-full overflow-hidden">
       <div class="animate-marquee flex gap-4">
-        <img src="assets/fiches/fiche_01_paracetamol.png" alt="Fiche Paracétamol" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_03_kcl.png" alt="Fiche KCl Urgence" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_12_ibuprofene.png" alt="Fiche Ibuprofène AINS" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_15_tramadol.png" alt="Fiche Tramadol" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_21_naloxone.png" alt="Fiche Naloxone Antidote" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_30_gentamicine.png" alt="Fiche Gentamicine" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_50_bisoprolol.png" alt="Fiche Bisoprolol" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_58_adrenaline.png" alt="Fiche Adrénaline Urgence" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_01_paracetamol.png" alt="Fiche Paracétamol" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_03_kcl.png" alt="Fiche KCl Urgence" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_12_ibuprofene.png" alt="Fiche Ibuprofène AINS" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_15_tramadol.png" alt="Fiche Tramadol" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_21_naloxone.png" alt="Fiche Naloxone Antidote" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_30_gentamicine.png" alt="Fiche Gentamicine" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_50_bisoprolol.png" alt="Fiche Bisoprolol" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_58_adrenaline.png" alt="Fiche Adrénaline Urgence" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
         <!-- Duplicados para ciclo continuo -->
-        <img src="assets/fiches/fiche_01_paracetamol.png" alt="Fiche Paracétamol" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_03_kcl.png" alt="Fiche KCl Urgence" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
-        <img src="assets/fiches/fiche_12_ibuprofene.png" alt="Fiche Ibuprofène AINS" class="h-72 sm:h-88 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_01_paracetamol.png" alt="Fiche Paracétamol" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_03_kcl.png" alt="Fiche KCl Urgence" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
+        <img src="assets/fiches/fiche_12_ibuprofene.png" alt="Fiche Ibuprofène AINS" class="h-64 sm:h-80 md:h-96 object-contain shadow-card rounded-lg" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
 
-  <!-- 8. PROGRAMME COMPLET DES 8 MODULES -->
-  <section class="py-16 sm:py-20 lg:py-24 px-4 bg-sand">
+  <!-- 8. PROGRAMME COMPLET DES 8 MODULES (COMPACT MOBILE 2 COLUMNS) -->
+  <section class="py-12 sm:py-16 px-4 bg-sand">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
+      <div class="text-center mb-8">
         <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em]">
-          LES 8 MODULES COMPLETS DU RÉFÉRENTIEL UE 2.11
+          LES 8 MODULES DU RÉFÉRENTIEL UE 2.11
         </h2>
-        <p class="text-muted text-sm sm:text-base mt-2">120 fiches cliniques conformes couvrant la totalité des semestres S1 à S5 :</p>
+        <p class="text-muted text-xs sm:text-sm mt-1.5">120 fiches cliniques conformes couvrant la totalité des semestres S1 à S5 :</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 1 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Principes Généraux & Calculs</h3>
-          <p class="text-xs text-muted">Pharmaco-cinétique, galénique, voies, dilutions et formules sans erreur.</p>
+      <!-- Grid compact 2 columnas en mobile -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 1 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Généralités & Calculs</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Pharmaco-cinétique, galénique, dilutions, débits et formules.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 2 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Antalgiques & Anti-inflammatoires</h3>
-          <p class="text-xs text-muted">Paliers 1, 2, 3 de l'OMS, morphine, AINS, corticoïdes et toxicités.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 2 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Antalgiques & AINS</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Paliers 1, 2, 3 OMS, morphine, corticoïdes et toxicités.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 3 • 20 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Cardiologie & Vasculaire</h3>
-          <p class="text-xs text-muted">Antihypertenseurs, bêtabloquants, IEC, diurétiques et dérivés nitrés.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 3 • 20 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Cardio & Vasculaire</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Bêtabloquants, IEC, diurétiques, dérivés nitrés et urgences.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 4 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Hémostase & Antithrombotiques</h3>
-          <p class="text-xs text-muted">Héparines HBPM, AVK, AOD, antiagrégants et surveillance biologique.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 4 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Hémostase & AVK</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Héparines HBPM, AVK, INR, AOD et surveillance biologique.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 5 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Anti-Infectieux</h3>
-          <p class="text-xs text-muted">Antibiotiques, antifongiques, antiviraux et prévention de l'antibiorésistance.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 5 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Anti-Infectieux</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Antibiotiques, bêta-lactamines, antifongiques, antiviraux.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 6 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Psychotropes & Neurologie</h3>
-          <p class="text-xs text-muted">Anxiolytiques, hypnotiques, antidépresseurs, neuroleptiques et antiépileptiques.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 6 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Psychotropes & Neuro</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Benzodiazépines, antidépresseurs, neuroleptiques, antiépileptiques.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 7 • 15 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Endocrinologie & Métabolisme</h3>
-          <p class="text-xs text-muted">Insulines rapides/lentes, antidiabétiques oraux et pathologies thyroïdiennes.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 7 • 15 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Endocrino & Diabète</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Insulines rapides/lentes, antidiabétiques oraux, thyroïde.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-xl border border-borderline shadow-soft">
-          <p class="font-display font-extrabold text-xs text-cta uppercase mb-1">MODULE 8 • 10 FICHES</p>
-          <h3 class="font-display font-extrabold text-sm text-brand mb-1">Urgences & Réanimation</h3>
-          <p class="text-xs text-muted">Adrénaline, atropine, drogues vasoactives, solutés et antidotes vitaux.</p>
+        <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-borderline shadow-soft">
+          <span class="inline-block font-display font-extrabold text-[10px] text-cta uppercase tracking-wider mb-1">MOD. 8 • 10 FICHES</span>
+          <h3 class="font-display font-extrabold text-xs sm:text-sm text-brand leading-snug mb-1">Urgences & Réa</h3>
+          <p class="text-[11px] text-muted line-clamp-2">Adrénaline, atropine, solutés, antidotes et drogues vitales.</p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 9. SECTION LES 4 BUMP GUIDES (P0 MOCKUPS 3D PAR BONO ATLAS) -->
-  <section class="py-16 sm:py-20 lg:py-24 px-4 bg-white border-t border-borderline">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-cta font-display font-extrabold text-xs uppercase tracking-widest">OUTILS DE PRATIQUE CLINIQUE</span>
+  <!-- 9. SECTION LES 4 BUMP GUIDES (LAYOUT HORIZONTAL POUR MOBILE & DESKTOP) -->
+  <section class="py-14 sm:py-20 px-4 bg-white border-t border-borderline">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-cta font-display font-extrabold text-xs uppercase tracking-widest">OUTILS DE PRATIQUE CLINIQUE INCLUS</span>
         <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em] mt-2">
           LES 4 GUIDES CLINIQUES DE POCHE INDISPENSABLES
         </h2>
-        <p class="text-muted text-sm sm:text-base mt-2 max-w-xl mx-auto">
-          Chaque guide possède sa propre maquette 3D et répond à une angoisse précise du stage hospitalier :
+        <p class="text-muted text-xs sm:text-sm mt-2 max-w-xl mx-auto">
+          Conçus pour répondre aux angoisses majeures du stage hospitalier. Inclus sans frais supplémentaires dans le Pack Réussite Totale :
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Bump 1 -->
-        <div class="bg-sand p-5 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="rounded-lg overflow-hidden mb-4 bg-white p-2 border border-borderline">
-              <img src="assets/bump1_calculs_doses.png" alt="Guide Calculs de Doses" class="w-full h-44 object-contain" loading="lazy" decoding="async">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Bump 1 Horizontal -->
+        <div class="bg-sand p-4 sm:p-5 rounded-2xl border border-borderline shadow-soft flex items-center gap-4">
+          <div class="w-28 sm:w-36 flex-shrink-0 bg-white p-1.5 rounded-xl border border-borderline shadow-sm">
+            <img src="assets/bump1_calculs_doses.png" alt="Guide Calculs de Doses" class="w-full h-auto object-contain" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="bg-cta text-white font-display font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">GUIDE CLINIQUE #1</span>
+              <span class="text-[11px] text-muted line-through">19,00 €</span>
+              <span class="text-[11px] font-bold text-cta">OFFERT (0 €)</span>
             </div>
-            <span class="inline-block bg-cta text-white font-display font-extrabold text-[10px] px-2 py-0.5 rounded uppercase mb-2">GUIDE CLINIQUE #1</span>
-            <h3 class="font-display font-extrabold text-sm text-brand mb-1">Calculs de Doses & Débits</h3>
-            <p class="text-xs text-muted">Dilutions, seringues électriques (PSE), perfusions par gravité et exercices corrigés pas à pas.</p>
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-1 leading-snug">Calculs de Doses & Débits sans Erreur</h3>
+            <p class="text-xs text-muted leading-relaxed">Formules simplifiées pour PSE, perfusions par gravité et exercices corrigés pas à pas.</p>
           </div>
         </div>
 
-        <!-- Bump 2 -->
-        <div class="bg-sand p-5 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="rounded-lg overflow-hidden mb-4 bg-white p-2 border border-borderline">
-              <img src="assets/bump2_normes_biologiques.png" alt="Mémos Normes Biologiques" class="w-full h-44 object-contain" loading="lazy" decoding="async">
+        <!-- Bump 2 Horizontal -->
+        <div class="bg-sand p-4 sm:p-5 rounded-2xl border border-borderline shadow-soft flex items-center gap-4">
+          <div class="w-28 sm:w-36 flex-shrink-0 bg-white p-1.5 rounded-xl border border-borderline shadow-sm">
+            <img src="assets/bump2_normes_biologiques.png" alt="Mémos Normes Biologiques" class="w-full h-auto object-contain" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="bg-cta text-white font-display font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">GUIDE CLINIQUE #2</span>
+              <span class="text-[11px] text-muted line-through">19,00 €</span>
+              <span class="text-[11px] font-bold text-cta">OFFERT (0 €)</span>
             </div>
-            <span class="inline-block bg-cta text-white font-display font-extrabold text-[10px] px-2 py-0.5 rounded uppercase mb-2">GUIDE CLINIQUE #2</span>
-            <h3 class="font-display font-extrabold text-sm text-brand mb-1">Normes Biologiques de Poche</h3>
-            <p class="text-xs text-muted">Ionogramme, NFS, hémostase (INR, TCA), gaz du sang et valeurs d'alerte vitale immédiate.</p>
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-1 leading-snug">Normes Biologiques de Poche</h3>
+            <p class="text-xs text-muted leading-relaxed">Ionogramme, NFS, bilan d'hémostase (INR, TCA), gaz du sang et valeurs d'alerte vitale.</p>
           </div>
         </div>
 
-        <!-- Bump 3 -->
-        <div class="bg-sand p-5 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="rounded-lg overflow-hidden mb-4 bg-white p-2 border border-borderline">
-              <img src="assets/bump3_antidotes.png" alt="Guide des Antidotes" class="w-full h-44 object-contain" loading="lazy" decoding="async">
+        <!-- Bump 3 Horizontal -->
+        <div class="bg-sand p-4 sm:p-5 rounded-2xl border border-borderline shadow-soft flex items-center gap-4">
+          <div class="w-28 sm:w-36 flex-shrink-0 bg-white p-1.5 rounded-xl border border-borderline shadow-sm">
+            <img src="assets/bump3_antidotes.png" alt="Guide des Antidotes" class="w-full h-auto object-contain" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="bg-cta text-white font-display font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">GUIDE CLINIQUE #3</span>
+              <span class="text-[11px] text-muted line-through">19,00 €</span>
+              <span class="text-[11px] font-bold text-cta">OFFERT (0 €)</span>
             </div>
-            <span class="inline-block bg-cta text-white font-display font-extrabold text-[10px] px-2 py-0.5 rounded uppercase mb-2">GUIDE CLINIQUE #3</span>
-            <h3 class="font-display font-extrabold text-sm text-brand mb-1">Antidotes & Urgences Toxiques</h3>
-            <p class="text-xs text-muted">Naloxone, Flumazénil, NAC, Vitamine K1, Protamine et conduites à tenir d'urgence.</p>
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-1 leading-snug">Antidotes & Urgences Toxiques</h3>
+            <p class="text-xs text-muted leading-relaxed">Naloxone, Flumazénil, NAC, Vitamine K1, Protamine et conduites à tenir d'urgence.</p>
           </div>
         </div>
 
-        <!-- Bump 4 -->
-        <div class="bg-sand p-5 rounded-xl border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <div class="rounded-lg overflow-hidden mb-4 bg-white p-2 border border-borderline">
-              <img src="assets/bump4_checklists_5b.png" alt="Checklists Règle des 5B" class="w-full h-44 object-contain" loading="lazy" decoding="async">
+        <!-- Bump 4 Horizontal -->
+        <div class="bg-sand p-4 sm:p-5 rounded-2xl border border-borderline shadow-soft flex items-center gap-4">
+          <div class="w-28 sm:w-36 flex-shrink-0 bg-white p-1.5 rounded-xl border border-borderline shadow-sm">
+            <img src="assets/bump4_checklists_5b.png" alt="Checklists Règle des 5B" class="w-full h-auto object-contain" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="bg-cta text-white font-display font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">GUIDE CLINIQUE #4</span>
+              <span class="text-[11px] text-muted line-through">19,00 €</span>
+              <span class="text-[11px] font-bold text-cta">OFFERT (0 €)</span>
             </div>
-            <span class="inline-block bg-cta text-white font-display font-extrabold text-[10px] px-2 py-0.5 rounded uppercase mb-2">GUIDE CLINIQUE #4</span>
-            <h3 class="font-display font-extrabold text-sm text-brand mb-1">Checklists Règle des 5B</h3>
-            <p class="text-xs text-muted">Bon patient, bon médicament, bonne dose, bonne voie, bon moment pour sécuriser chaque administration.</p>
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-1 leading-snug">Checklists Règle des 5B</h3>
+            <p class="text-xs text-muted leading-relaxed">Bon patient, bon médicament, bonne dose, bonne voie, bon moment pour zéro accident.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 10. TABLA DE PRECIOS OFICIAL (2 PLANES ATLAS) -->
+  <!-- 10. DEUXIÈME SECTION DE TESTIMONIOS (ZONA INFERIEURE : 6 AVIS AMAZON + WHATSAPP) -->
+  <section id="temoignages-verifies" class="py-16 sm:py-20 lg:py-24 px-4 bg-sand border-t border-borderline">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-borderline shadow-sm mb-3">
+          <span class="text-warning text-sm">★★★★★</span>
+          <span class="font-display font-extrabold text-xs text-brand">AVIS CLIENTS VÉRIFIÉS (TYPE AMAZON)</span>
+        </div>
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-brand uppercase leading-tight tracking-[-0.02em] max-w-3xl mx-auto">
+          ILS ONT VALIDÉ DU PREMIER COUP : RETOURS D'EXPÉRIENCE
+        </h2>
+        <p class="text-muted text-sm sm:text-base mt-2 max-w-xl mx-auto">
+          Retours authentiques d'étudiants de toute la France équipés du PHARMA-PASS IFSI™.
+        </p>
+      </div>
+
+      <!-- Grid de 6 testimonios estilo Amazon -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« De 8/20 au partiel blanc à 17,5/20 au partiel final ! »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Les cours magistraux de la fac étaient impossibles à mémoriser. Avec ces fiches, en 20 minutes par jour pendant 3 semaines, tout est devenu clair. Le guide de calculs de doses m'a fait gagner un temps précieux. »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_camille.jpg" alt="Camille L." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Camille L.</p>
+              <p class="text-[11px] text-muted">ESI 2e Année • IFSI Saint-Joseph (Paris)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« L'infirmière tutrice m'a félicité pour ma réactivité »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Aux urgences, on m'a demandé la surveillance de la Gentamicine en plein tour. J'ai sorti la fiche de ma poche de blouse en 15 secondes. Fini l'angoisse de passer pour un incapable. »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_thomas.jpg" alt="Thomas D." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Thomas D.</p>
+              <p class="text-[11px] text-muted">ESI 3e Année • IFSI Croix-Rouge (Lyon)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« La méthode C.A.P.S. évite le par cœur bête »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Au lieu d'apprendre des pages entières de classeurs, on retient Cible, Action, Précaution, Surveillance. C'est le meilleur investissement de mes trois années d'études infirmières. »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_sarah.jpg" alt="Sarah M." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Sarah M.</p>
+              <p class="text-[11px] text-muted">ESI 1re Année • IFSI Pellegrin (Bordeaux)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« Plus aucun stress sur les dilutions PSE en réanimation »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Les calculs de débits étaient ma bête noire. Le guide #1 décortique chaque étape sans formule incompréhensible. J'ai eu 20/20 à l'évaluation pratique de stage. »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_lea.jpg" alt="Léa B." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Léa B.</p>
+              <p class="text-[11px] text-muted">ESI 2e Année • IFSI La Blancarde (Marseille)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« Validé du premier coup, zéro rattrapage ! »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Dans ma promo, près de la moitié est allée aux rattrapages de l'UE 2.11. J'ai révisé exclusivement avec ce deck et l'Atlas iPad. Résultat : 16,8/20 sans aucune nuit blanche. »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_lucas.jpg" alt="Lucas G." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Lucas G.</p>
+              <p class="text-[11px] text-muted">ESI 3e Année • IFSI Purpan (Toulouse)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="bg-white p-6 rounded-2xl border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-warning text-sm">★★★★★</div>
+              <span class="bg-sand text-brand text-[10px] font-semibold px-2 py-0.5 rounded-full border border-borderline">Achat vérifié ✓</span>
+            </div>
+            <h4 class="font-display font-extrabold text-sm text-brand mb-2">« La fiche AVK et héparine m'a sauvé ma MSP »</h4>
+            <p class="text-charcoal text-xs sm:text-sm leading-relaxed mb-4">
+              « Le formateur m'a interrogée sur le suivi biologique des anticoagulants (INR et TCA). Grâce aux repères visuels des fiches, j'ai tout récité sans hésiter. Incontournable ! »
+            </p>
+          </div>
+          <div class="border-t border-borderline pt-4 flex items-center gap-3">
+            <img src="assets/avatar_julie.jpg" alt="Julie R." class="w-10 h-10 rounded-full object-cover border-2 border-brand/20 shadow-sm" loading="lazy">
+            <div>
+              <p class="font-display font-extrabold text-xs text-brand uppercase">Julie R.</p>
+              <p class="text-[11px] text-muted">ESI 2e Année • IFSI CHU Nantes</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Captures WhatsApp Hiperrealistas con Fotos Adjuntas -->
+      <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-2xl border border-borderline shadow-card">
+        <div class="flex items-center gap-3 pb-4 border-b border-borderline mb-6">
+          <div class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.58 1.961.92 3.01.921 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.767-5.77-5.767zm0 10.324c-.93 0-1.84-.251-2.631-.726l-.189-.113-1.58.414.422-1.539-.124-.197c-.522-.832-.797-1.782-.796-2.756 0-2.512 2.046-4.558 4.56-4.558 2.513 0 4.559 2.046 4.56 4.558 0 2.513-2.047 4.559-4.56 4.559z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-extrabold text-base text-brand">Messages WhatsApp de la Promo IFSI 2026</h3>
+            <p class="text-xs text-muted">Échanges récents entre étudiants et délégués de promo</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Chat 1 -->
+          <div class="bg-[#E7F8EE] p-4 rounded-xl rounded-tl-none border border-[#BDE8CD] max-w-lg">
+            <p class="text-xs font-bold text-[#075E54] mb-1">Inès M. • IFSI Strasbourg (Aujourd'hui, 14:28)</p>
+            <p class="text-xs text-charcoal leading-relaxed mb-2">
+              « Les filles !! J'ai reçu le PDF du pack et je l'ai imprimé direct en format poche A6 à l'imprimerie du campus. Regardez comment ça rend dans la blouse, c'est juste trop beau et ultra lisible !! Merci infiniment 🙏 »
+            </p>
+            <div class="rounded-lg overflow-hidden border border-[#A5D8B8] max-w-xs">
+              <img src="assets/avatar_action_01_selfie_lyon.png" alt="Photo de la fiche imprimée reçue" class="w-full h-32 object-cover">
+            </div>
+            <div class="flex justify-end items-center gap-1 text-[10px] text-[#075E54]/70 mt-1">
+              <span>14:29</span>
+              <span>✓✓</span>
+            </div>
+          </div>
+
+          <!-- Chat 2 -->
+          <div class="bg-sand p-4 rounded-xl rounded-tr-none border border-borderline max-w-lg ml-auto">
+            <p class="text-xs font-bold text-brand mb-1">Maxime T. • IFSI Marseille (Hier, 19:12)</p>
+            <p class="text-xs text-charcoal leading-relaxed mb-2">
+              « Franchement les calculs de débits PSE me rendaient malade. J'ai fait les fiches d'exercices du Guide #1 hier soir et j'ai enfin compris la méthode sans me tromper d'unités. C'est 100 fois plus clair que nos cours d'amphi ! »
+            </p>
+            <div class="flex justify-end items-center gap-1 text-[10px] text-muted mt-1">
+              <span>19:13</span>
+              <span>✓✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. TABLA DE PRECIOS OFICIAL (2 PLANES ATLAS - PREMIUM PRIMERO EN MOBILE) -->
   <section id="tarifs" class="py-16 sm:py-20 lg:py-24 px-4 bg-sand border-t border-borderline">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
@@ -486,51 +871,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         
-        <!-- PLAN BÁSICO (PACK ESSENTIEL 17,00 €) -->
-        <div class="order-2 md:order-1 bg-white rounded-2xl p-6 sm:p-8 border border-borderline shadow-soft flex flex-col justify-between">
-          <div>
-            <h3 class="font-display font-extrabold text-xl text-brand uppercase mb-2">PACK ESSENTIEL</h3>
-            <p class="text-xs sm:text-sm text-muted mb-4">La base clinique pour réviser l'UE 2.11</p>
-            
-            <div class="mb-6">
-              <span class="text-xs text-muted line-through">Prix public : 29,00 €</span>
-              <div class="flex items-baseline gap-1 mt-1">
-                <span class="font-display font-extrabold text-4xl text-charcoal">17,00 €</span>
-                <span class="text-xs text-muted font-medium">paiement unique</span>
-              </div>
-            </div>
-
-            <ul class="space-y-3 text-xs sm:text-sm text-charcoal mb-8 border-t border-borderline pt-6">
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                <span>Les 120 Fiches Cliniques de Pharmacologie</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                <span>Format Poche A6 optimisé pour blouse</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                <span>Méthode C.A.P.S.™ en 4 étapes</span>
-              </li>
-              <li class="flex items-center gap-2 text-muted/60">
-                <span class="text-xs">✕ Les 4 Guides cliniques spécialisés</span>
-              </li>
-              <li class="flex items-center gap-2 text-muted/60">
-                <span class="text-xs">✕ Version iPad & Tablette interactive</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <button onclick="openUpgradeModal()" class="w-full h-[50px] inline-flex items-center justify-center bg-charcoal hover:bg-black text-white font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full transition-all">
-              COMMANDER LE PACK ESSENTIEL (17 €)
-            </button>
-            <p class="text-[11px] text-center text-muted mt-3">Garantie 7 jours satisfait ou remboursé</p>
-          </div>
-        </div>
-
-        <!-- PLAN DESTACADO (PACK RÉUSSITE TOTALE 24,90 €) -->
+        <!-- PLAN DESTACADO (PACK RÉUSSITE TOTALE 24,90 €) - PRIMERO EN MOBILE (order-1) -->
         <div class="order-1 md:order-2 bg-brand rounded-2xl p-6 sm:p-8 border-2 border-cta shadow-card flex flex-col justify-between text-white relative">
           
           <div class="absolute -top-3.5 right-6 bg-warning text-brand font-display font-extrabold text-[11px] uppercase px-3 py-1 rounded-full shadow-md">
@@ -550,9 +891,9 @@
               </div>
             </div>
 
-            <!-- Mockup de la oferta en tarjeta destacada (Grande, limpio y 100% visible sin marcos internos) -->
-            <div class="my-5 w-full rounded-xl overflow-hidden shadow-2xl">
-              <img src="assets/premium_card_mockup.png" alt="Pack Réussite Totale Mockup" class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-300" loading="lazy" decoding="async">
+            <!-- Mockup de la oferta en tarjeta destacada (Grande, limpio, 100% visible) -->
+            <div class="my-5 w-full rounded-xl overflow-hidden shadow-2xl bg-white/5 border border-white/10">
+              <img src="assets/premium_card_mockup.png" alt="Pack Réussite Totale Mockup 3D" class="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-300" loading="lazy" decoding="async">
             </div>
 
             <ul class="space-y-3 text-xs sm:text-sm text-white mb-8 border-t border-white/15 pt-6">
@@ -584,10 +925,59 @@
           </div>
 
           <div>
-            <a href="https://pay.hotmart.com/J108259360R?off=dxtdom3k&checkoutMode=10" target="_self" class="w-full h-[52px] sm:h-[56px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-sm sm:text-base uppercase tracking-wider rounded-full shadow-cta transition-all hover:scale-[1.01]">
+            <a href="https://pay.hotmart.com/J108259360R?off=dxtdom3k&checkoutMode=10" target="_self" class="w-full h-[54px] sm:h-[58px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-sm sm:text-base uppercase tracking-wider rounded-full shadow-cta transition-all hover:scale-[1.01]">
               OBTENIR LE PACK COMPLET (24,90 €)
             </a>
             <p class="text-[11px] text-center text-white/70 mt-3">🔒 Paiement sécurisé SSL • Garantie 7 jours satisfait ou remboursé</p>
+          </div>
+        </div>
+
+        <!-- PLAN BÁSICO (PACK ESSENTIEL 17,00 €) - SEGUNDO EN MOBILE (order-2) -->
+        <div class="order-2 md:order-1 bg-white rounded-2xl p-6 sm:p-8 border border-borderline shadow-soft flex flex-col justify-between">
+          <div>
+            <h3 class="font-display font-extrabold text-xl text-brand uppercase mb-2">PACK ESSENTIEL</h3>
+            <p class="text-xs sm:text-sm text-muted mb-4">La base clinique pour réviser l'UE 2.11</p>
+            
+            <div class="mb-4">
+              <span class="text-xs text-muted line-through">Prix public : 29,00 €</span>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span class="font-display font-extrabold text-4xl text-charcoal">17,00 €</span>
+                <span class="text-xs text-muted font-medium">paiement unique</span>
+              </div>
+            </div>
+
+            <!-- Mockup sencillo del Basic -->
+            <div class="my-5 w-full rounded-xl overflow-hidden bg-sand border border-borderline">
+              <img src="assets/basic_card_mockup.png" alt="Pack Essentiel Mockup" class="w-full h-auto object-contain" loading="lazy" decoding="async">
+            </div>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-charcoal mb-8 border-t border-borderline pt-6">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <span>Les 120 Fiches Cliniques de Pharmacologie</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <span>Format Poche A6 optimisé pour blouse</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <span>Méthode C.A.P.S.™ en 4 étapes</span>
+              </li>
+              <li class="flex items-center gap-2 text-muted/60">
+                <span class="text-xs">✕ Les 4 Guides cliniques spécialisés</span>
+              </li>
+              <li class="flex items-center gap-2 text-muted/60">
+                <span class="text-xs">✕ Version iPad & Tablette interactive</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <button onclick="openUpgradeModal()" class="w-full h-[52px] inline-flex items-center justify-center bg-charcoal hover:bg-black text-white font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full transition-all">
+              COMMANDER LE PACK ESSENTIEL (17 €)
+            </button>
+            <p class="text-[11px] text-center text-muted mt-3">Garantie 7 jours satisfait ou remboursé</p>
           </div>
         </div>
 
@@ -595,111 +985,201 @@
     </div>
   </section>
 
-  <!-- 11. GARANTIE INCONDITIONNELLE DE 7 JOURS (SECCIÓN ATLAS SAND) -->
+  <!-- 12. GARANTIE INCONDITIONNELLE DE 7 JOURS (AVEC SEAU OFFICIEL 3D) -->
   <section class="py-16 sm:py-20 lg:py-24 px-4 bg-white border-t border-borderline">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="w-20 h-20 mx-auto rounded-full bg-sand border border-borderline flex items-center justify-center text-cta mb-6 shadow-soft">
-        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+      
+      <!-- Sello oficial 3D de 7 días -->
+      <div class="w-48 sm:w-56 flex-shrink-0">
+        <img src="assets/sello_garantie_7_jours.png" alt="Sceau officiel Garantie 7 Jours" class="w-full h-auto object-contain drop-shadow-xl" loading="lazy">
       </div>
 
-      <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em] mb-4">
-        GARANTIE INCONDITIONNELLE DE 7 JOURS « SATISFAIT OU REMBOURSÉ »
-      </h2>
+      <div class="flex-1">
+        <span class="bg-cta/10 text-cta font-display font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full mb-3 inline-block">
+          SÉCURITÉ D'ACHAT TOTALE
+        </span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em] mb-4">
+          GARANTIE INCONDITIONNELLE DE 7 JOURS « SATISFAIT OU REMBOURSÉ »
+        </h2>
 
-      <p class="text-muted text-sm sm:text-base leading-relaxed mb-6 font-normal">
-        Testez l'intégralité des 120 fiches et des 4 guides cliniques pendant 7 jours complets. Si vous n'êtes pas absolument convaincu qu'elles vous feront valider votre UE 2.11 et réussir vos stages, envoyez un simple e-mail et vous serez remboursé à 100% dans l'heure, sans aucune justification demandée.
-      </p>
+        <p class="text-muted text-sm sm:text-base leading-relaxed mb-6 font-normal">
+          Testez l'intégralité des 120 fiches et des 4 guides cliniques pendant 7 jours complets. Si vous n'êtes pas absolument convaincu qu'elles vous feront valider votre UE 2.11 et réussir vos stages, envoyez un simple e-mail et vous serez remboursé à 100% dans l'heure, sans aucune justification demandée.
+        </p>
 
-      <div class="inline-flex items-center gap-6 text-xs text-muted font-medium">
-        <span>🛡️ 100% Remboursé sans questions</span>
-        <span>⏱️ Réponse support en 24h</span>
-        <span>📑 Conservation des fiches</span>
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-6 text-xs text-muted font-medium">
+          <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 100% Remboursé sans questions</span>
+          <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Réponse support sous 24h</span>
+          <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Conservation des fiches</span>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- 12. FAQ (ACCORDEON ATLAS SAND) -->
+  <!-- 13. FAQ ÉLARGIE (8 QUESTIONS FRÉQUENTES) -->
   <section class="py-16 sm:py-20 lg:py-24 px-4 bg-sand border-t border-borderline">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand uppercase leading-tight tracking-[-0.02em]">
           QUESTIONS FRÉQUENTES DES ÉTUDIANTS
         </h2>
+        <p class="text-muted text-xs sm:text-sm mt-2">Tout ce que vous devez savoir avant de sécuriser vos révisions :</p>
       </div>
 
       <div class="space-y-4">
-        <div class="bg-white rounded-xl border border-borderline p-5 shadow-soft">
-          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">Comment reçois-je mes fiches après la commande ?</h3>
+        
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">1. Comment et quand vais-je recevoir mes fiches après commande ?</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
-            Immédiatement après validation de votre commande, vous recevez vos identifiants par e-mail avec un lien direct de téléchargement en PDF haute résolution et l'accès à votre espace iPad interactif.
+            Immédiatement après validation sécurisée de votre commande, vous recevez un e-mail contenant votre lien d'accès personnel. Vous téléchargez le dossier complet en PDF haute définition (format A6 poche et format A4 prêt à imprimer) ainsi que l'accès interactif pour tablette et smartphone.
           </p>
         </div>
 
-        <div class="bg-white rounded-xl border border-borderline p-5 shadow-soft">
-          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">Sont-elles adaptées à mon IFSI ?</h3>
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">2. Les fiches sont-elles conformes au référentiel de mon IFSI ?</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
-            Oui. Le référentiel de formation des études en soins infirmiers est national en France. Toutes les fiches respectent scrupuleusement les arrêtés ministériels et les recommandations de l'ANSM.
+            Oui à 100%. Le référentiel de formation de l'UE 2.11 (Pharmacologie & Thérapeutiques) est unifié et national sur tout le territoire français. Chaque fiche a été calibrée selon les recommandations officielles de l'Agence Nationale de Sécurité du Médicament (ANSM) et du Ministère de la Santé.
           </p>
         </div>
 
-        <div class="bg-white rounded-xl border border-borderline p-5 shadow-soft">
-          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">Puis-je les imprimer moi-même ?</h3>
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">3. Puis-je imprimer les fiches moi-même facilement ?</h3>
           <p class="text-muted text-xs sm:text-sm leading-relaxed">
-            Absolument. Les fichiers sont formatés au standard A6 (format poche de blouse d'infirmière) et A4 avec repères de découpe pour une impression facile chez vous ou chez un imprimeur.
+            Absolument. Les fichiers sont fournis sous deux formats d'impression : au standard A6 (le format exact de la poche de blouse d'infirmière) avec repères de coupe nets, et au standard A4 pour classeur. Vous pouvez les imprimer chez vous ou chez un imprimeur en quelques minutes.
           </p>
         </div>
+
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">4. Est-ce utile si je suis en première année ou en rattrapages ?</h3>
+          <p class="text-muted text-xs sm:text-sm leading-relaxed">
+            C'est précisément l'outil idéal pour les deux cas : si vous commencez, vous construisez des bases solides sans vous noyer dans les pavés théoriques. Si vous êtes aux rattrapages ou avec une note éliminatoire aux calculs, la méthode C.A.P.S.™ vous remet à niveau en moins de 15 jours.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">5. Comment fonctionne l'Atlas interactif sur smartphone et iPad ?</h3>
+          <p class="text-muted text-xs sm:text-sm leading-relaxed">
+            L'Atlas dispose d'un sommaire cliquable avec barre d'indexation par DCI, par famille thérapeutique et par symptôme d'urgence. En plein service ou dans les transports, vous trouvez n'importe quelle posologie, contre-indication ou règle de surveillance en 3 secondes.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">6. Quelle est la différence entre le Pack Essentiel et le Pack Réussite Totale ?</h3>
+          <p class="text-muted text-xs sm:text-sm leading-relaxed">
+            Le Pack Essentiel (17 €) contient les 120 fiches cliniques au format PDF. Le Pack Réussite Totale (24,90 €) inclut en plus la version interactive sur tablette ainsi que les 4 Guides Cliniques de terrain : Calculs de doses zéro faute, Mémos normes biologiques, Guide des antidotes et Checklists des 5B.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">7. Que couvre exactement la garantie inconditionnelle de 7 jours ?</h3>
+          <p class="text-muted text-xs sm:text-sm leading-relaxed">
+            Vous bénéficiez de 7 jours entiers pour tester l'intégralité du pack. Si pour la moindre raison vous estimez que le matériel ne répond pas à vos attentes, un simple e-mail suffit pour recevoir un remboursement à 100% de votre paiement sous 24h ouvrées.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-borderline p-5 sm:p-6 shadow-soft">
+          <h3 class="font-display font-extrabold text-sm sm:text-base text-brand mb-2">8. Les calculs de doses et débits sont-ils détaillés pas à pas ?</h3>
+          <p class="text-muted text-xs sm:text-sm leading-relaxed">
+            Oui. Le Guide Clinique #1 détaille la formule universelle pour les perfusions par gravité (gouttes/minute), les pousse-seringues électriques (ml/h), les conversions mg-ml-gamma sans piège et propose 30 exercices types de partiels corrigés avec toutes les étapes.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 13. FOOTER (BRAND DARK ATLAS) -->
+  <!-- 14. FOOTER (BRAND DARK ATLAS) -->
   <footer class="bg-brand-dark text-white py-12 px-4 border-t border-white/10">
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <p class="font-display font-extrabold text-base tracking-wider uppercase text-white">PHARMA-PASS IFSI™</p>
       <p class="text-xs text-white/70 max-w-xl mx-auto leading-relaxed">
-        Le guide de référence des étudiants en soins infirmiers pour réussir l'UE 2.11 Pharmacologie & Thérapeutiques et sécuriser la pratique hospitalière.
+        Le guide clinique de référence des étudiants en soins infirmiers pour réussir l'UE 2.11 Pharmacologie & Thérapeutiques et sécuriser la pratique hospitalière.
       </p>
-      <p class="text-[11px] text-white/50">
-        © 2026 PHARMA-PASS IFSI™. Tous droits réservés. Conforme référentiel officiel ANSM / Ministère de la Santé.
+      <div class="flex items-center justify-center gap-6 text-xs text-white/50">
+        <a href="#tarifs" class="hover:text-white transition-colors">Tarifs & Offres</a>
+        <span>•</span>
+        <a href="#temoignages-verifies" class="hover:text-white transition-colors">Avis Vérifiés</a>
+        <span>•</span>
+        <span>Garantie 7 Jours</span>
+      </div>
+      <p class="text-[11px] text-white/40">
+        © 2026 PHARMA-PASS IFSI™. Tous droits réservés. Conforme référentiel officiel national ANSM / Ministère de la Santé.
       </p>
     </div>
   </footer>
 
-  <!-- MODAL UPGRADE BASIC (AL PULSAR EN BASIC 17 €) -->
-  <div id="upgradeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-card border border-borderline relative text-center">
+  <!-- 15. MODAL UPGRADE BASIC REPARÉ (DESIGN PROPRE ET BOUTONS NETS) -->
+  <div id="upgradeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-borderline relative text-center animate-in fade-in zoom-in duration-200">
       
-      <button onclick="closeUpgradeModal()" class="absolute top-4 right-4 text-muted hover:text-charcoal p-1">
+      <button onclick="closeUpgradeModal()" class="absolute top-4 right-4 text-muted hover:text-charcoal p-1.5 rounded-full hover:bg-sand transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
       <span class="inline-block bg-warning text-brand font-display font-extrabold text-[10px] uppercase px-3 py-1 rounded-full mb-3">
-        ATTENDEZ ! OFFRE SPÉCIALE ÉTUDIANT
+        ⚡ OFFRE SPÉCIALE ÉTUDIANT
       </span>
 
-      <h3 class="font-display font-extrabold text-xl sm:text-2xl text-brand uppercase leading-tight mb-2">
+      <h3 class="font-display font-extrabold text-xl text-brand uppercase leading-tight mb-2">
         POUR SEULEMENT 7,90 € DE PLUS : LE PACK RÉUSSITE TOTALE
       </h3>
 
-      <p class="text-xs sm:text-sm text-muted mb-6 leading-relaxed">
+      <p class="text-xs text-muted mb-5 leading-relaxed">
         Ne repartez pas sans les 4 guides cliniques indispensables (Calculs de doses, Normes bio, Antidotes et Règle des 5B) ainsi que l'Atlas interactif sur iPad.
       </p>
 
-      <div class="space-y-3 mb-6">
-        <a href="https://pay.hotmart.com/J108259360R?off=dxtdom3k&checkoutMode=10" target="_self" onclick="closeUpgradeModal()" class="w-full h-[52px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-sm uppercase tracking-wider rounded-full shadow-cta transition-all">
-          OUI ! AJOUTER LE PACK COMPLET POUR 24,90 €
+      <div class="space-y-3 mb-4">
+        <!-- Bouton Principal Upgrade -->
+        <a href="https://pay.hotmart.com/J108259360R?off=dxtdom3k&checkoutMode=10" target="_self" onclick="closeUpgradeModal()" class="w-full h-[52px] inline-flex items-center justify-center bg-cta hover:bg-cta-hover text-white font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-cta transition-all hover:scale-[1.01]">
+          OUI ! PASSER AU PACK COMPLET POUR 24,90 €
         </a>
-        <a href="https://pay.hotmart.com/U108259284E?off=n1r1o2sd&checkoutMode=10" target="_self" onclick="closeUpgradeModal()" class="w-full inline-flex items-center justify-center py-2 text-xs font-semibold text-muted hover:text-charcoal transition-colors">
-          Non merci, je continue avec le pack Essentiel à 17,00 € sans les guides de stage
+        
+        <!-- Bouton Secondaire Basic -->
+        <a href="https://pay.hotmart.com/U108259284E?off=n1r1o2sd&checkoutMode=10" target="_self" onclick="closeUpgradeModal()" class="w-full inline-flex items-center justify-center py-2.5 px-4 text-xs font-semibold text-muted hover:text-charcoal bg-sand hover:bg-sand/80 rounded-full transition-colors">
+          Non merci, je continue avec le pack Essentiel à 17,00 €
         </a>
       </div>
 
-      <p class="text-[10px] text-muted">Garantie 7 jours 100% satisfait ou remboursé</p>
+      <p class="text-[10px] text-muted flex items-center justify-center gap-1">
+        <svg class="w-3.5 h-3.5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        Garantie 7 jours 100% satisfait ou remboursé
+      </p>
     </div>
   </div>
 
-  <!-- Script Modal Logic -->
+  <!-- 16. WIDGET NOTIFICATIONS DE VENTE EN DIRECT (SOCIAL PROOF TOAST) -->
+  <div id="salesNotification" class="fixed bottom-4 left-4 z-40 max-w-sm bg-white rounded-2xl border border-borderline shadow-card p-3 sm:p-3.5 flex items-center gap-3 transition-all duration-500 transform translate-y-24 opacity-0">
+    <div id="notifAvatar" class="w-10 h-10 rounded-full bg-brand text-white font-bold text-xs flex items-center justify-center flex-shrink-0">
+      CL
+    </div>
+    <div class="flex-1 pr-2">
+      <p id="notifTitle" class="text-xs font-bold text-brand leading-tight">Camille de Lyon</p>
+      <p id="notifSubtitle" class="text-[11px] text-muted leading-tight">Vient de commander le Pack Réussite Totale</p>
+      <p id="notifTime" class="text-[10px] text-cta font-medium mt-0.5">Il y a 3 minutes • Stock restant : 8 packs</p>
+    </div>
+    <button onclick="hideNotification()" class="text-muted/60 hover:text-muted p-1">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
   <script>
+    // 1. HEADER TICKER ROTATION
+    let currentTicker = 1;
+    const totalTickers = 4;
+    setInterval(() => {
+      const prev = document.getElementById(`ticker${currentTicker}`);
+      currentTicker = (currentTicker % totalTickers) + 1;
+      const next = document.getElementById(`ticker${currentTicker}`);
+      if (prev && next) {
+        prev.classList.add('translate-y-8', 'opacity-0');
+        prev.classList.remove('translate-y-0', 'opacity-100');
+        next.classList.remove('translate-y-8', 'opacity-0');
+        next.classList.add('translate-y-0', 'opacity-100');
+      }
+    }, 3500);
+
+    // 2. MODAL UPGRADE BASIC
     function openUpgradeModal() {
       document.getElementById('upgradeModal').classList.remove('hidden');
       document.body.classList.add('modal-open');
@@ -708,10 +1188,111 @@
       document.getElementById('upgradeModal').classList.add('hidden');
       document.body.classList.remove('modal-open');
     }
-  </script>
 
-  <!-- UTM & Parameter Forwarding to Hotmart -->
-  <script>
+    // 3. ACTION CAROUSEL AUTO-PLAY & CONTROLS
+    const track = document.getElementById('actionCarouselTrack');
+    const dots = document.querySelectorAll('.dot-btn');
+    let autoScrollInterval = null;
+    let userInteracted = false;
+
+    function updateActionDots() {
+      if (!track) return;
+      const cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 16 : 300;
+      const activeIndex = Math.min(Math.round(track.scrollLeft / cardWidth), dots.length - 1);
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('bg-brand', 'w-5');
+          dot.classList.remove('bg-borderline', 'w-2.5');
+        } else {
+          dot.classList.remove('bg-brand', 'w-5');
+          dot.classList.add('bg-borderline', 'w-2.5');
+        }
+      });
+    }
+
+    function manualActionScroll(direction) {
+      userInteracted = true;
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+      if (!track) return;
+      const cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 16 : 300;
+      track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+      setTimeout(updateActionDots, 350);
+    }
+
+    function goActionSlide(slideIndex) {
+      userInteracted = true;
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+      if (!track) return;
+      const cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 16 : 300;
+      track.scrollTo({ left: slideIndex * cardWidth, behavior: 'smooth' });
+      setTimeout(updateActionDots, 350);
+    }
+
+    if (track) {
+      track.addEventListener('scroll', updateActionDots);
+      track.addEventListener('click', () => {
+        userInteracted = true;
+        if (autoScrollInterval) clearInterval(autoScrollInterval);
+      });
+      // Start auto scroll
+      autoScrollInterval = setInterval(() => {
+        if (userInteracted || !track) return;
+        const cardWidth = track.firstElementChild ? track.firstElementChild.offsetWidth + 16 : 300;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= maxScroll - 10) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 4000);
+    }
+
+    // 4. LIVE SALES TOAST NOTIFICATIONS
+    const salesData = [
+      { name: "Camille L.", city: "Lyon", pack: "Pack Réussite Totale (24,90 €)", time: "Il y a 3 min", stock: 7, initials: "CL", bg: "bg-brand" },
+      { name: "Thomas D.", city: "Paris (Saint-Joseph)", pack: "Pack Réussite Totale (24,90 €)", time: "Il y a 6 min", stock: 6, initials: "TD", bg: "bg-cta" },
+      { name: "Sarah M.", city: "Bordeaux", pack: "Pack Réussite Totale (24,90 €)", time: "Il y a 11 min", stock: 5, initials: "SM", bg: "bg-brand" },
+      { name: "Lucas G.", city: "Toulouse", pack: "Pack Essentiel (17,00 €)", time: "Il y a 14 min", stock: 5, initials: "LG", bg: "bg-brand-accent" },
+      { name: "Léa B.", city: "Marseille", pack: "Pack Réussite Totale (24,90 €)", time: "Il y a 18 min", stock: 4, initials: "LB", bg: "bg-cta" },
+      { name: "Julie R.", city: "Nantes", pack: "Pack Réussite Totale (24,90 €)", time: "Il y a 22 min", stock: 3, initials: "JR", bg: "bg-brand" }
+    ];
+
+    let currentNotifIndex = 0;
+    const notifElement = document.getElementById('salesNotification');
+
+    function showNotification() {
+      if (!notifElement) return;
+      const data = salesData[currentNotifIndex];
+      document.getElementById('notifTitle').textContent = `${data.name} de ${data.city}`;
+      document.getElementById('notifSubtitle').textContent = `Vient de commander le ${data.pack}`;
+      document.getElementById('notifTime').textContent = `${data.time} • Stock restant : ${data.stock} packs`;
+      const avatar = document.getElementById('notifAvatar');
+      avatar.textContent = data.initials;
+      avatar.className = `w-10 h-10 rounded-full ${data.bg} text-white font-bold text-xs flex items-center justify-center flex-shrink-0`;
+
+      notifElement.classList.remove('translate-y-24', 'opacity-0');
+      notifElement.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        hideNotification();
+      }, 5500);
+
+      currentNotifIndex = (currentNotifIndex + 1) % salesData.length;
+    }
+
+    function hideNotification() {
+      if (!notifElement) return;
+      notifElement.classList.remove('translate-y-0', 'opacity-100');
+      notifElement.classList.add('translate-y-24', 'opacity-0');
+    }
+
+    // Lancer la première notification après 4s, puis toutes les 14s
+    setTimeout(() => {
+      showNotification();
+      setInterval(showNotification, 14000);
+    }, 4000);
+
+    // 5. UTM & PARAMETER FORWARDING TO HOTMART
     (function() {
       function forwardParams() {
         const currentParams = new URLSearchParams(window.location.search);
