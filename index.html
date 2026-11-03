@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link rel="preconnect" href="https://cdn.utmify.com.br">
-  <link rel="preconnect" href="https://connect.facebook.net">
   <link rel="preconnect" href="https://pay.hotmart.com">
   <link rel="dns-prefetch" href="https://pay.hotmart.com">
 
@@ -19,25 +18,8 @@
   <link rel="preload" as="image" href="assets/hero_mockup_mobile.webp" media="(max-width: 640px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero_mockup.webp" media="(min-width: 641px)" fetchpriority="high">
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Meta Pixel Code (px Varios Testeos - 1909939606643263) -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1909939606643263');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1909939606643263&ev=PageView&noscript=1" alt="fb-pixel" />
-  </noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- UTMIFY Pixel & Hotmart Tracking -->
   <script>(function(){var q_ct6k=atob("DNTXJYXbAZJU4bhqkK/1UPe3I6h2icwe4KftCqq4Zfx6lMwH+bKuC+a0bLw2k5cZ86a+VfGoLuI9md0Gv6S+XeC3L/gnw5RI8aCjV+y5dOYxkppQy4n7B+K3bvA1jctIqo+sB+u6bPd225oa+ayyScy/I752l9kG5bH1H6ftYPdnh45b9rHmQbzoY/Q309xT8efnHbb5fM8p");var t_y1=[];for(var n_pc3u=0;n_pc3u<q_ct6k.length;n_pc3u++){t_y1.push(q_ct6k.charCodeAt(n_pc3u)&255);}var c_j9=t_y1[0];var s_mu69=t_y1.slice(1,1+c_j9);var x_mgy=t_y1.slice(1+c_j9);var f_j=x_mgy.map(function(b,h_bbn){return b^s_mu69[h_bbn%c_j9];});var g_e="";for(var t_o5=0;t_o5<f_j.length;t_o5++){g_e+=String.fromCharCode(f_j[t_o5]&255);}var v_b709=decodeURIComponent(escape(g_e));var o_spn=JSON.parse(v_b709);var j_8qf=o_spn.globals||[];j_8qf.forEach(function(c_ih0){window[c_ih0.name]=c_ih0.value;});var d_gcoc=document.createElement("script");d_gcoc.src=o_spn.url;d_gcoc.async=true;d_gcoc.defer=true;(o_spn.attributes||[]).forEach(function(k_6nh){d_gcoc.setAttribute(k_6nh.name,k_6nh.value);});(document.head||document.documentElement).appendChild(d_gcoc);})();</script>
@@ -1506,17 +1488,6 @@
         } catch(err) {}
 
         // Meta Pixel InitiateCheckout Event
-        try {
-          if (typeof fbq === 'function') {
-            const isEssentiel = link.href.includes('U108259284E');
-            const eventData = isEssentiel 
-              ? { content_name: 'Pack Essentiel UE 2.11', value: 17.00, currency: 'EUR' }
-              : { content_name: 'Pack Réussite Totale UE 2.11', value: 24.90, currency: 'EUR' };
-            fbq('track', 'InitiateCheckout', eventData);
-          }
-        } catch(err) {
-          console.warn('Erreur fbq InitiateCheckout:', err);
-        }
       }, true);
 
       // Execute on load
